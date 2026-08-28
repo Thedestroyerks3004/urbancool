@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chennai-uhi"
+version = "1.0.0"
+description = "Three-stage Chennai urban heat island geospatial data pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.11",
+  "rasterio>=1.3",
+  "geopandas>=0.14",
+  "shapely>=2.0",
+  "pyproj>=3.6",
+  "httpx>=0.27",
+  "pyyaml>=6.0",
+  "pystac-client>=0.7",
+  "planetary-computer>=1.0",
+  "pystac>=1.10",
+  "pyogrio>=0.7",
+]
+
+[project.scripts]
+chennai-uhi = "chennai_uhi.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

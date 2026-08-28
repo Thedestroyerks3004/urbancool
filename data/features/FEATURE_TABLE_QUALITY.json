@@ -1,0 +1,531 @@
+{
+  "rows": 294030,
+  "expected_rows": 294030,
+  "cells": 13365,
+  "months": [
+    "2024-01",
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-12",
+    "2026-01",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-08"
+  ],
+  "null_rates": {
+    "cell_id": 0.0,
+    "row_150": 0.0,
+    "col_150": 0.0,
+    "x_center_m": 0.0,
+    "y_center_m": 0.0,
+    "cell_area_m2": 0.0,
+    "month": 0.0,
+    "scene_date": 0.0,
+    "lst": 0.3351732816379281,
+    "ndvi": 0.33513927150290784,
+    "ndbi": 0.33513927150290784,
+    "building_density": 0.33340815563037784,
+    "sky_view_factor": 0.0,
+    "albedo_estimate": 0.01050573070775091,
+    "population_density": 0.33340815563037784,
+    "population_source_type": 0.0,
+    "wind_speed": 0.0,
+    "wind_direction": 0.0,
+    "elevation": 0.33340815563037784,
+    "slope": 0.33340815563037784,
+    "typology": 0.0
+  },
+  "coverage_gate": [
+    {
+      "month": "2024-01",
+      "feature": "lst",
+      "excluded_cells": 5006
+    },
+    {
+      "month": "2024-01",
+      "feature": "ndvi",
+      "excluded_cells": 5006
+    },
+    {
+      "month": "2024-01",
+      "feature": "ndbi",
+      "excluded_cells": 5006
+    },
+    {
+      "month": "2024-01",
+      "feature": "albedo",
+      "excluded_cells": 500
+    },
+    {
+      "month": "2024-02",
+      "feature": "lst",
+      "excluded_cells": 5210
+    },
+    {
+      "month": "2024-02",
+      "feature": "ndvi",
+      "excluded_cells": 5213
+    },
+    {
+      "month": "2024-02",
+      "feature": "ndbi",
+      "excluded_cells": 5210
+    },
+    {
+      "month": "2024-02",
+      "feature": "albedo",
+      "excluded_cells": 1268
+    },
+    {
+      "month": "2024-03",
+      "feature": "lst",
+      "excluded_cells": 4891
+    },
+    {
+      "month": "2024-03",
+      "feature": "ndvi",
+      "excluded_cells": 4891
+    },
+    {
+      "month": "2024-03",
+      "feature": "ndbi",
+      "excluded_cells": 4891
+    },
+    {
+      "month": "2024-03",
+      "feature": "albedo",
+      "excluded_cells": 62
+    },
+    {
+      "month": "2024-04",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-04",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-04",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-04",
+      "feature": "albedo",
+      "excluded_cells": 2
+    },
+    {
+      "month": "2024-05",
+      "feature": "lst",
+      "excluded_cells": 4905
+    },
+    {
+      "month": "2024-05",
+      "feature": "ndvi",
+      "excluded_cells": 4905
+    },
+    {
+      "month": "2024-05",
+      "feature": "ndbi",
+      "excluded_cells": 4905
+    },
+    {
+      "month": "2024-05",
+      "feature": "albedo",
+      "excluded_cells": 151
+    },
+    {
+      "month": "2024-07",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-07",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-07",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-07",
+      "feature": "albedo",
+      "excluded_cells": 44
+    },
+    {
+      "month": "2024-08",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-08",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-08",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-08",
+      "feature": "albedo",
+      "excluded_cells": 10
+    },
+    {
+      "month": "2024-09",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-09",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-09",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2024-09",
+      "feature": "albedo",
+      "excluded_cells": 12
+    },
+    {
+      "month": "2025-01",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-01",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-01",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-01",
+      "feature": "albedo",
+      "excluded_cells": 1228
+    },
+    {
+      "month": "2025-02",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-02",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-02",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-02",
+      "feature": "albedo",
+      "excluded_cells": 1031
+    },
+    {
+      "month": "2025-03",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-03",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-03",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-03",
+      "feature": "albedo",
+      "excluded_cells": 0
+    },
+    {
+      "month": "2025-04",
+      "feature": "lst",
+      "excluded_cells": 4941
+    },
+    {
+      "month": "2025-04",
+      "feature": "ndvi",
+      "excluded_cells": 4941
+    },
+    {
+      "month": "2025-04",
+      "feature": "ndbi",
+      "excluded_cells": 4941
+    },
+    {
+      "month": "2025-04",
+      "feature": "albedo",
+      "excluded_cells": 118
+    },
+    {
+      "month": "2025-06",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-06",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-06",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-06",
+      "feature": "albedo",
+      "excluded_cells": 42
+    },
+    {
+      "month": "2025-07",
+      "feature": "lst",
+      "excluded_cells": 4896
+    },
+    {
+      "month": "2025-07",
+      "feature": "ndvi",
+      "excluded_cells": 4896
+    },
+    {
+      "month": "2025-07",
+      "feature": "ndbi",
+      "excluded_cells": 4896
+    },
+    {
+      "month": "2025-07",
+      "feature": "albedo",
+      "excluded_cells": 98
+    },
+    {
+      "month": "2025-08",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-08",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-08",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2025-08",
+      "feature": "albedo",
+      "excluded_cells": 57
+    },
+    {
+      "month": "2025-12",
+      "feature": "lst",
+      "excluded_cells": 5377
+    },
+    {
+      "month": "2025-12",
+      "feature": "ndvi",
+      "excluded_cells": 5366
+    },
+    {
+      "month": "2025-12",
+      "feature": "ndbi",
+      "excluded_cells": 5366
+    },
+    {
+      "month": "2025-12",
+      "feature": "albedo",
+      "excluded_cells": 893
+    },
+    {
+      "month": "2026-01",
+      "feature": "lst",
+      "excluded_cells": 5409
+    },
+    {
+      "month": "2026-01",
+      "feature": "ndvi",
+      "excluded_cells": 5409
+    },
+    {
+      "month": "2026-01",
+      "feature": "ndbi",
+      "excluded_cells": 5409
+    },
+    {
+      "month": "2026-01",
+      "feature": "albedo",
+      "excluded_cells": 1893
+    },
+    {
+      "month": "2026-03",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-03",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-03",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-03",
+      "feature": "albedo",
+      "excluded_cells": 295
+    },
+    {
+      "month": "2026-04",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-04",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-04",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-04",
+      "feature": "albedo",
+      "excluded_cells": 0
+    },
+    {
+      "month": "2026-05",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-05",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-05",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-05",
+      "feature": "albedo",
+      "excluded_cells": 22
+    },
+    {
+      "month": "2026-06",
+      "feature": "lst",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-06",
+      "feature": "ndvi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-06",
+      "feature": "ndbi",
+      "excluded_cells": 4890
+    },
+    {
+      "month": "2026-06",
+      "feature": "albedo",
+      "excluded_cells": 25
+    },
+    {
+      "month": "2026-08",
+      "feature": "lst",
+      "excluded_cells": 4913
+    },
+    {
+      "month": "2026-08",
+      "feature": "ndvi",
+      "excluded_cells": 4913
+    },
+    {
+      "month": "2026-08",
+      "feature": "ndbi",
+      "excluded_cells": 4913
+    },
+    {
+      "month": "2026-08",
+      "feature": "albedo",
+      "excluded_cells": 131
+    }
+  ],
+  "albedo_provenance": {
+    "source": "Planetary Computer landsat-c2-l2",
+    "scene_counts": {
+      "2024-01": 3,
+      "2024-02": 4,
+      "2024-03": 3,
+      "2024-04": 4,
+      "2024-05": 4,
+      "2024-07": 2,
+      "2024-08": 3,
+      "2024-09": 3,
+      "2025-01": 3,
+      "2025-02": 4,
+      "2025-03": 4,
+      "2025-04": 3,
+      "2025-06": 2,
+      "2025-07": 3,
+      "2025-08": 3,
+      "2025-12": 3,
+      "2026-01": 4,
+      "2026-03": 4,
+      "2026-04": 4,
+      "2026-05": 4,
+      "2026-06": 4,
+      "2026-08": 2
+    },
+    "formula": "Liang-style: 0.356 blue + 0.130 red + 0.373 NIR + 0.085 SWIR1 - 0.072"
+  },
+  "wind_provenance": {
+    "source": "Open-Meteo ERA5 archive",
+    "variables": [
+      "wind_speed_10m_mean",
+      "wind_direction_10m_dominant"
+    ],
+    "centroid_only": true
+  },
+  "training_started": false
+}

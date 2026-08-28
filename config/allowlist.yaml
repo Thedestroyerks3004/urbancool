@@ -1,0 +1,55 @@
+# Authoritative domain allow-list for Stage 2 provenance checks.
+# A resolved URL host MUST match one of these for its data type or the layer FAILS.
+
+landsat:
+  - planetarycomputer.microsoft.com
+  - landsatlook.usgs.gov
+  - earthexplorer.usgs.gov
+  - usgs.gov
+  - nasa.gov
+  - storage.googleapis.com   # GEE export bucket only when access=gee (not default)
+  - earthengine.googleapis.com
+
+dem:
+  - planetarycomputer.microsoft.com
+  - copernicus.eu
+  - dataspace.copernicus.eu
+  - open.esa.int
+  - usgs.gov                 # SRTM if used as fallback
+
+osm:
+  - download.geofabrik.de
+  - osmdata.openstreetmap.de
+  - download.openstreetmap.fr
+
+landcover:
+  - planetarycomputer.microsoft.com
+  - esa.int
+  - worldcover.org
+  - spatio.esa.int
+
+population:
+  - data.worldpop.org
+  - worldpop.org
+  - ftp.worldpop.org.uk
+  - planetarycomputer.microsoft.com
+  - jeodpp.jrc.ec.europa.eu
+  - ghsl.jrc.ec.europa.eu
+  - humansettlement.jrc.ec.europa.eu
+
+weather:
+  - cds.climate.copernicus.eu
+  - datastore.copernicus-climate.eu
+  - archive-api.open-meteo.com
+  - api.open-meteo.com
+  - open-meteo.com
+
+aoi:
+  - geodata.ucdavis.edu       # GADM
+  - gadm.org
+  - download.geofabrik.de
+  - nominatim.openstreetmap.org
+  - overpass-api.de
+  - openstreetmap.org
+  - raw.githubusercontent.com # only for documented GADM mirrors if primary fails
+  - planetarycomputer.microsoft.com

@@ -1,0 +1,80 @@
+# Chennai UHI geospatial pipeline — project settings
+# Present-date end of temporal window is computed at runtime (never hardcode).
+
+project:
+  name: chennai_uhi
+  study_area: "Chennai, Tamil Nadu, India"
+  temporal_start: "2024-01-01"
+  # temporal_end: computed at runtime as UTC date of execution
+
+crs:
+  target_epsg: 32644          # WGS 84 / UTM zone 44N
+  geographic_epsg: 4326       # only for intermediate AOI fetch; never final output
+
+grid:
+  # Single shared reference grid for all clean rasters (pixel-aligned).
+  cell_size_m: 30             # ≤30 m required; keep finer native where available (e.g. S2 10 m)
+  # Origin is locked once AOI bounds (in EPSG:32644) are known; see grid.py
+  snap_origin: true
+
+coverage:
+  min_valid_fraction: 0.90    # Constraint 5 — below this → EXCLUDE from clean output
+  # Deliberately excluded variables (never attempt to fetch/reconstruct):
+  excluded_variables:
+    - building_height
+    - height_width_ratio
+    - canyon_h_w
+
+composite:
+  cadence: monthly            # Landsat LST / NDVI / NDBI monthly composites
+  cloud_mask: qa_pixel        # Landsat Collection 2 QA_PIXEL
+
+paths:
+  root: data
+  aoi: data/aoi
+  raw: data/raw
+  rejected: data/rejected
+  clean: data/clean
+  logs: data/logs
+
+sources:
+  # Pick ONE access path per variable family and keep it for the whole time range.
+  landsat:
+    access: planetary_computer   # Microsoft Planetary Computer STAC
+    collection: landsat-c2-l2
+    sensors: [LC08, LC09]        # Landsat 8/9 only — no MODIS blend
+    products:
+      lst: ST_B10                # surface temperature band (Kelvin after scale)
+      ndvi: derived              # from SR_B5, SR_B4
+      ndbi: derived              # from SR_B6, SR_B5
+  dem:
+    product: copernicus_glo30
+    access: planetary_computer
+    collection: cop-dem-glo-30
+  osm:
+    # Dated Geofabrik snapshot — pin once for the whole project
+    provider: geofabrik
+    region: asia/india
+    # Snapshot date must be set before production runs; extractor records MD5
+    snapshot_hint: "use latest available asia/india-latest.osm.pbf + .md5 at fetch time and PIN the resolved URL+date"
+  landcover:
+    product: esa_worldcover_v200
+    access: planetary_computer
+    collection: esa-worldcover
+  population:
+    product: worldpop
+    access: worldpop_rest        # closest release year within 2024–present
+    fallback: ghs_pop
+  weather:
+    product: era5_land
+    access: cds_or_open_meteo    # air temp for each Landsat acquisition date
+    variable: 2m_temperature
+
+gap_fill:
+  method: nearest_within_radius
+  max_radius_px: 3              # small gaps only; large gaps stay NoData + flagged
+  log_pixel_counts: true
+
+naming:
+  pattern: "chennai_{variable}_{unit}_{yyyy-mm}_{res}m.{ext}"
+  # Examples: chennai_lst_k_2024-06_30m.tif
