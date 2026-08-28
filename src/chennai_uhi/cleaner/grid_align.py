@@ -1,5 +1,3 @@
-"""Warp any raster onto the shared reference grid; clip to AOI polygon."""
-
 from __future__ import annotations
 
 from typing import Any

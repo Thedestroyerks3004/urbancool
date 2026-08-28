@@ -1,5 +1,3 @@
-"""Structured JSON fetch logging for Stage 1 → Stage 2 handoff."""
-
 from __future__ import annotations
 
 import hashlib
@@ -44,7 +42,6 @@ def md5_file(path: Path, chunk: int = 1 << 20) -> str:
 
 
 class FetchLog:
-    """Accumulates per-fetch records; written as extractor_fetch_log.json."""
 
     def __init__(self, temporal_start: str, temporal_end: str) -> None:
         self.records: list[dict[str, Any]] = []

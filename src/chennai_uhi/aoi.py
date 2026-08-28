@@ -1,12 +1,3 @@
-"""Authoritative Chennai AOI (full city/metropolitan administrative boundary).
-
-Sources (tried in order):
-  1. GADM administrative boundary for Chennai (India ADM2 / city)
-  2. Geofabrik/OSM relation for Chennai Corporation / Chennai district
-
-Never hand-draw or approximate the AOI. Boundary is written once and reused.
-"""
-
 from __future__ import annotations
 
 import json
@@ -23,13 +14,9 @@ from shapely.ops import unary_union
 
 logger = logging.getLogger(__name__)
 
-# GADM 4.1 India ADM2 GeoJSON subset endpoints / known mirrors.
-# Primary: GADM download page requires interactive download; we use the
-# documented geopackage URL pattern and filter to Chennai.
 GADM_IND_URL = (
     "https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_IND_2.json.zip"
 )
-# Nominatim for OSM relation lookup (read-only; result pinned to file).
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 
 CHENNAI_NAME_FILTERS = (
@@ -43,7 +30,6 @@ def _host(url: str) -> str:
 
 
 def _fetch_gadm_chennai(out_dir: Path) -> tuple[gpd.GeoDataFrame, dict[str, Any]]:
-    """Download GADM IND ADM2 and filter to Chennai district/city."""
     zip_path = out_dir / "gadm41_IND_2.json.zip"
     meta: dict[str, Any] = {
         "source_name": "GADM 4.1 India ADM2",
@@ -66,7 +52,6 @@ def _fetch_gadm_chennai(out_dir: Path) -> tuple[gpd.GeoDataFrame, dict[str, Any]
     subset = gdf.loc[mask].copy()
     if subset.empty:
         raise RuntimeError("GADM download succeeded but no Chennai feature matched")
-    # Prefer exact district match if present
     for col in name_cols:
         exact = subset[subset[col].astype(str).str.lower().isin(CHENNAI_NAME_FILTERS)]
         if not exact.empty:
@@ -79,7 +64,6 @@ def _fetch_gadm_chennai(out_dir: Path) -> tuple[gpd.GeoDataFrame, dict[str, Any]
 
 
 def _fetch_osm_nominatim_chennai(out_dir: Path) -> tuple[gpd.GeoDataFrame, dict[str, Any]]:
-    """Fallback: OSM administrative boundary via Nominatim (pinned snapshot)."""
     params = {
         "q": "Chennai Corporation, Tamil Nadu, India",
         "format": "geojson",
@@ -102,7 +86,6 @@ def _fetch_osm_nominatim_chennai(out_dir: Path) -> tuple[gpd.GeoDataFrame, dict[
     raw_path.write_text(json.dumps(payload), encoding="utf-8")
     gdf = gpd.GeoDataFrame.from_features(payload.get("features", []), crs="EPSG:4326")
     if gdf.empty:
-        # Try district query
         params["q"] = "Chennai, Tamil Nadu, India"
         meta["query_parameters"] = params
         with httpx.Client(timeout=60.0, headers=headers, follow_redirects=True) as client:
@@ -113,7 +96,6 @@ def _fetch_osm_nominatim_chennai(out_dir: Path) -> tuple[gpd.GeoDataFrame, dict[
         gdf = gpd.GeoDataFrame.from_features(payload.get("features", []), crs="EPSG:4326")
     if gdf.empty:
         raise RuntimeError("Nominatim returned no geometry for Chennai")
-    # Keep largest polygon (city/district extent)
     gdf["area_tmp"] = gdf.to_crs(32644).geometry.area
     gdf = gdf.sort_values("area_tmp", ascending=False).head(1).drop(columns=["area_tmp"])
     meta["data_dates"] = [datetime.now(timezone.utc).date().isoformat()]
@@ -129,7 +111,6 @@ def load_or_fetch_aoi(
     target_epsg: int = 32644,
     force: bool = False,
 ) -> tuple[gpd.GeoDataFrame, dict[str, Any]]:
-    """Return full Chennai boundary in target CRS + fetch provenance meta."""
     aoi_dir.mkdir(parents=True, exist_ok=True)
     geojson_path = aoi_dir / "chennai_boundary.geojson"
     meta_path = aoi_dir / "chennai_boundary_fetch.json"
@@ -147,12 +128,12 @@ def load_or_fetch_aoi(
     meta: dict[str, Any] = {}
     try:
         gdf, meta = _fetch_gadm_chennai(aoi_dir)
-    except Exception as exc:  # noqa: BLE001 — try fallback
+    except Exception as exc:
         errors.append(f"GADM: {exc}")
         logger.warning("GADM AOI fetch failed: %s", exc)
         try:
             gdf, meta = _fetch_osm_nominatim_chennai(aoi_dir)
-        except Exception as exc2:  # noqa: BLE001
+        except Exception as exc2:
             errors.append(f"Nominatim: {exc2}")
             raise RuntimeError(
                 "Failed to obtain authoritative Chennai boundary. "
@@ -162,7 +143,6 @@ def load_or_fetch_aoi(
     assert gdf is not None
     if gdf.crs is None:
         gdf = gdf.set_crs(epsg=4326)
-    # Dissolve to single multipolygon covering full city extent
     geom = unary_union(gdf.geometry.values)
     out = gpd.GeoDataFrame(
         {"name": ["Chennai"], "source": [meta.get("source_name")]},
@@ -180,7 +160,6 @@ def load_or_fetch_aoi(
 
 
 def aoi_polygon(gdf: gpd.GeoDataFrame):
-    """Single shapely geometry for precise clip (not bbox)."""
     return unary_union(gdf.geometry.values)
 
 

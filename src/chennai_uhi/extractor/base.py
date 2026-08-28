@@ -1,5 +1,3 @@
-"""Shared extractor helpers (STAC / Planetary Computer, raster IO)."""
-
 from __future__ import annotations
 
 import logging
@@ -17,7 +15,6 @@ PC_STAC = "https://planetarycomputer.microsoft.com/api/stac/v1"
 
 
 def bbox_wgs84(gdf_any_crs) -> list[float]:
-    """Return [west, south, east, north] in EPSG:4326."""
     if gdf_any_crs.crs is None:
         raise ValueError("AOI GeoDataFrame has no CRS")
     g = gdf_any_crs if gdf_any_crs.crs.to_epsg() == 4326 else gdf_any_crs.to_crs(4326)
@@ -26,7 +23,6 @@ def bbox_wgs84(gdf_any_crs) -> list[float]:
 
 
 def sign_pc_href(href: str) -> str:
-    """Sign a Planetary Computer asset HREF if planetary-computer is installed."""
     try:
         import planetary_computer as pc
 
@@ -52,7 +48,6 @@ def host_allowed(url: str, allowed_hosts: Iterable[str]) -> bool:
 
 
 def month_datetime_range(month_start: date) -> str:
-    """STAC datetime string for a calendar month (inclusive)."""
     if month_start.month == 12:
         end = date(month_start.year + 1, 1, 1)
     else:

@@ -1,5 +1,3 @@
-"""CLI: run extractor → validator → cleaner in sequence."""
-
 from __future__ import annotations
 
 import argparse

@@ -1,13 +1,3 @@
-"""Single shared reference grid for all clean rasters.
-
-Defined once from the full Chennai AOI in EPSG:32644:
-  - fixed origin (snapped)
-  - fixed cell size (default 30 m; finer native kept where source < 30 m)
-  - fixed extent = AOI bounds snapped to the grid
-
-Every cleaner output is warped onto this grid so layers are pixel-aligned.
-"""
-
 from __future__ import annotations
 
 import json
@@ -22,8 +12,8 @@ import numpy as np
 class ReferenceGrid:
     epsg: int
     cell_size_m: float
-    origin_x: float  # upper-left / west edge of first column
-    origin_y: float  # north edge of first row (north-up)
+    origin_x: float
+    origin_y: float
     width: int
     height: int
     nodata: float = -9999.0
@@ -36,7 +26,6 @@ class ReferenceGrid:
 
     @property
     def bounds(self) -> tuple[float, float, float, float]:
-        """(minx, miny, maxx, maxy)."""
         maxx = self.origin_x + self.width * self.cell_size_m
         miny = self.origin_y - self.height * self.cell_size_m
         return (self.origin_x, miny, maxx, self.origin_y)
@@ -94,7 +83,6 @@ def build_reference_grid(
     epsg: int = 32644,
     nodata: float = -9999.0,
 ) -> ReferenceGrid:
-    """Lock the shared grid from AOI bounds (minx, miny, maxx, maxy) in EPSG:32644."""
     if cell_size_m > 30.0:
         raise ValueError("cell_size_m must be ≤ 30 m")
     minx, miny, maxx, maxy = bounds_32644

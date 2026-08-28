@@ -1,9 +1,3 @@
-"""Gap handling for small holes below the exclusion threshold.
-
-Conservative default: nearest valid pixel within max_radius_px.
-Larger holes remain NoData; pixel counts are logged — never silent large-gap fill.
-"""
-
 from __future__ import annotations
 
 from typing import Any
@@ -17,7 +11,6 @@ def fill_small_gaps(
     nodata: float,
     max_radius_px: int = 3,
 ) -> tuple[np.ndarray, dict[str, Any]]:
-    """Fill only gaps reachable within max_radius_px of a valid pixel."""
     data = array.astype(np.float64).copy()
     valid = np.isfinite(data) & (data != nodata)
     n_nodata_before = int((~valid).sum())
@@ -31,13 +24,11 @@ def fill_small_gaps(
             "remaining_nodata": n_nodata_before,
         }
 
-    # Distance to nearest valid
     dist, indices = ndimage.distance_transform_edt(~valid, return_distances=True, return_indices=True)
     fillable = (~valid) & (dist <= max_radius_px) & (dist > 0)
     out = data.copy()
     out[fillable] = data[indices[0][fillable], indices[1][fillable]]
     valid_after = np.isfinite(out) & (out != nodata)
-    # restore nodata sentinel
     out = np.where(np.isfinite(out) & ((array == nodata) | fillable | valid), out, nodata)
     out = np.where(valid | fillable, out, nodata)
     n_after = int((~(np.isfinite(out) & (out != nodata))).sum())

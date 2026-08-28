@@ -1,12 +1,12 @@
 # Chennai UHI three-stage geospatial pipeline
 
-Production-grade extractor → validator → cleaner for a citywide urban heat island
+Reproducible extractor → validator → cleaner for a citywide urban heat island
 study of **Chennai, Tamil Nadu, India**.
 
 **Nothing from the extractor is analysis-ready.** Only the CLEANER’s outputs for
 layers that **PASSED** every VALIDATOR check count as clean data.
 
-## Hard constraints (enforced in code)
+## Project rules
 
 | Constraint | Implementation |
 |---|---|
@@ -122,7 +122,7 @@ data/
     cleaner_summary.json
 ```
 
-## Deliberate exclusions
+## Current exclusions
 
 - **Building height / H–W ratio** — prior validation: &lt;5% real OSM height tags; Microsoft height layer placeholders for this region. Logged in validator design exclusions and cleaner summary.
 - **Any layer &lt;90% real coverage** over the full Chennai polygon — excluded (not gap-filled to look complete).

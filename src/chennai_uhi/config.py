@@ -1,5 +1,3 @@
-"""Configuration loading and temporal window helpers."""
-
 from __future__ import annotations
 
 import json
@@ -20,7 +18,6 @@ def load_yaml(path: Path) -> dict[str, Any]:
 
 
 def present_date_utc() -> date:
-    """Runtime 'present date' — never hardcode an end date."""
     return datetime.now(timezone.utc).date()
 
 
@@ -34,7 +31,6 @@ def temporal_window(settings: dict[str, Any] | None = None) -> tuple[date, date]
 
 
 def month_starts(start: date, end: date) -> list[date]:
-    """First day of each calendar month intersecting [start, end]."""
     months: list[date] = []
     y, m = start.year, start.month
     while True:
