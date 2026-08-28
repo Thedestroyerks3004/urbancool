@@ -43,7 +43,7 @@ Passed layers only → EPSG:32644 → shared grid → AOI polygon mask → small
 - Stage 2 validation is complete for the current data version. Provenance, allowlists, checksums, dates, AOI coverage, CRS, resolution, sensor consistency, structure, and value-range checks are implemented. Products below the 90% coverage threshold are rejected rather than silently repaired.
 - Stage 3 cleaning is complete. Accepted products are reprojected to `EPSG:32644`, aligned to the locked 30 m grid, clipped to the Chennai polygon, gap-filled only within the configured three-pixel limit, and written with metadata sidecars.
 - The modeling manifest is locked to 22 common healthy months and records 66 monthly raster references, six static layers, and the required weather joins.
-- Stage 4 has a working feature-builder implementation and a 150 m analysis-cell grid. A provisional feature table exists, but it is not accepted as final because required fields still contain substantial null values and the current rebuild has not completed its auxiliary remote data retrieval.
+- Stage 4 has a working feature-builder implementation and a 150 m analysis-cell grid. A complete-case feature table is available with 194,718 rows across 22 months and zero nulls in required fields; 99,312 incomplete cell-month rows were excluded without imputation. The full remote rebuild remains unfinished.
 
 ### Implemented modules
 
@@ -63,9 +63,9 @@ Passed layers only → EPSG:32644 → shared grid → AOI polygon mask → small
 
 ### What needs to be done next
 
-1. Finish the Stage 4 feature-building run and confirm that albedo and wind retrievals complete successfully.
+1. Finish the full Stage 4 remote retrieval and compare it with the complete-case table.
 2. Validate the final table for the exact manifest month set, deterministic cell IDs, expected row scope, grid geometry, CRS, scene-date joins, required columns, null rates, and coverage exclusions.
-3. Replace the provisional feature table and reports only after those checks pass. Keep the synthetic population label on every affected row.
+3. Keep the synthetic population label on every affected row and document the excluded cell-months.
 4. Train and evaluate separate models for each typology. Record metrics, feature importance, and uncertainty rather than producing one unqualified city-wide model.
 5. Run SHAP analysis and generate cell-level predictions and heat-risk rankings.
 6. Produce the final decision-support deliverables, including maps, tables, methodology, limitations, and reproducibility details.

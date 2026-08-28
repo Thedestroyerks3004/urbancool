@@ -13,6 +13,9 @@ data/aoi/**
 !data/aoi/reference_grid.json
 data/clean/STAGE4_FEATURE_TABLE.csv.gz
 data/features/**
+!data/features/chennai_uhi_feature_table_complete.parquet
+!data/features/FEATURE_TABLE_COMPLETE_QUALITY.json
+!data/features/FEATURE_TABLE_COMPLETE_REPORT.md
 !data/raw/.gitkeep
 !data/clean/.gitkeep
 !data/rejected/.gitkeep
