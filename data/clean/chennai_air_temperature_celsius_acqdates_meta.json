@@ -1,0 +1,15 @@
+{
+  "layer_id": "chennai_weather_airtemp",
+  "variable": "air_temperature",
+  "unit": "celsius",
+  "source_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\weather\\chennai_airtemp_era5_daily.json",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_air_temperature_celsius_acqdates.json",
+  "crs": null,
+  "resolution_m": null,
+  "gap_fill": {
+    "method": "none"
+  },
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_weather_airtemp",
+  "cleaned_at": "2026-08-27T17:41:38.801013+00:00"
+}

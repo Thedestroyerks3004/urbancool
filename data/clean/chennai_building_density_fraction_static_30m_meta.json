@@ -1,0 +1,53 @@
+{
+  "layer_id": "chennai_building_density",
+  "variable": "building_density",
+  "unit": "fraction",
+  "file_name": "chennai_building_density_fraction_static_30m.tif",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_building_density_fraction_static_30m.tif",
+  "source_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\osm\\chennai_building_density_raw.tif",
+  "original_acquisition_dates": [
+    "2026-08-27"
+  ],
+  "month": null,
+  "resolution_m": 30.0,
+  "crs": "EPSG:32644",
+  "width": 495,
+  "height": 671,
+  "transform": [
+    30.0,
+    0.0,
+    409950.0,
+    0.0,
+    -30.0,
+    1452060.0
+  ],
+  "grid_origin": [
+    409950.0,
+    1452060.0
+  ],
+  "gap_fill": {
+    "method": "nearest_within_radius",
+    "max_radius_px": 3,
+    "nodata_before": 115528,
+    "nodata_after": 108511,
+    "filled_pixels": 7017,
+    "remaining_nodata": 108511,
+    "note": "Gaps farther than max_radius_px left as NoData \u2014 not interpolated as real data"
+  },
+  "warp": {
+    "src_crs": "EPSG:32644",
+    "src_epsg": 32644,
+    "src_res": [
+      30.0,
+      30.0
+    ],
+    "src_nodata": -9999.0,
+    "resampling": "bilinear"
+  },
+  "sha256": "7e674978db49dc48028ba850264ca00fe41b118948d8e59e323f552b6901a39f",
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_building_density",
+  "cleaned_at": "2026-08-27T17:41:54.047721+00:00",
+  "last_available_date": null,
+  "source_name": "Derived from pinned Geofabrik OSM snapshot"
+}

@@ -1,0 +1,53 @@
+{
+  "layer_id": "chennai_dem_m",
+  "variable": "dem",
+  "unit": "m",
+  "file_name": "chennai_dem_m_static_30m.tif",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_dem_m_static_30m.tif",
+  "source_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\dem\\chennai_dem_m_raw.tif",
+  "original_acquisition_dates": [
+    "static"
+  ],
+  "month": null,
+  "resolution_m": 30.0,
+  "crs": "EPSG:32644",
+  "width": 495,
+  "height": 671,
+  "transform": [
+    30.0,
+    0.0,
+    409950.0,
+    0.0,
+    -30.0,
+    1452060.0
+  ],
+  "grid_origin": [
+    409950.0,
+    1452060.0
+  ],
+  "gap_fill": {
+    "method": "nearest_within_radius",
+    "max_radius_px": 3,
+    "nodata_before": 115528,
+    "nodata_after": 108511,
+    "filled_pixels": 7017,
+    "remaining_nodata": 108511,
+    "note": "Gaps farther than max_radius_px left as NoData \u2014 not interpolated as real data"
+  },
+  "warp": {
+    "src_crs": "EPSG:32644",
+    "src_epsg": 32644,
+    "src_res": [
+      30.0,
+      30.0
+    ],
+    "src_nodata": -9999.0,
+    "resampling": "bilinear"
+  },
+  "sha256": "dbedef1315b158c5550cb07a97a73d6e9cc1f4bf8b513aa628bfffffaf230525",
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_dem_m",
+  "cleaned_at": "2026-08-27T17:41:26.894174+00:00",
+  "last_available_date": null,
+  "source_name": "Copernicus DEM GLO-30 (cached)"
+}

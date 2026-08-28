@@ -1,0 +1,55 @@
+{
+  "layer_id": "chennai_ndvi_2025-04",
+  "variable": "ndvi",
+  "unit": "index",
+  "file_name": "chennai_ndvi_index_2025-04_30m.tif",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_ndvi_index_2025-04_30m.tif",
+  "source_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-04_raw.tif",
+  "original_acquisition_dates": [
+    "2025-04-08",
+    "2025-04-16",
+    "2025-04-24"
+  ],
+  "month": "2025-04",
+  "resolution_m": 30.0,
+  "crs": "EPSG:32644",
+  "width": 495,
+  "height": 671,
+  "transform": [
+    30.0,
+    0.0,
+    409950.0,
+    0.0,
+    -30.0,
+    1452060.0
+  ],
+  "grid_origin": [
+    409950.0,
+    1452060.0
+  ],
+  "gap_fill": {
+    "method": "nearest_within_radius",
+    "max_radius_px": 3,
+    "nodata_before": 117248,
+    "nodata_after": 109828,
+    "filled_pixels": 7420,
+    "remaining_nodata": 109828,
+    "note": "Gaps farther than max_radius_px left as NoData \u2014 not interpolated as real data"
+  },
+  "warp": {
+    "src_crs": "EPSG:32644",
+    "src_epsg": 32644,
+    "src_res": [
+      30.0,
+      30.0
+    ],
+    "src_nodata": -9999.0,
+    "resampling": "bilinear"
+  },
+  "sha256": "55dd684e9b76196097b7333fc644815a7739b7b57649ef0578f67c2d4236b0cb",
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_ndvi_2025-04",
+  "cleaned_at": "2026-08-27T17:41:33.506721+00:00",
+  "last_available_date": "2025-04-24",
+  "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)"
+}

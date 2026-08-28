@@ -1,0 +1,53 @@
+{
+  "layer_id": "chennai_slope_deg",
+  "variable": "slope",
+  "unit": "deg",
+  "file_name": "chennai_slope_deg_static_30m.tif",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_slope_deg_static_30m.tif",
+  "source_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\dem\\chennai_slope_deg_raw.tif",
+  "original_acquisition_dates": [
+    "static"
+  ],
+  "month": null,
+  "resolution_m": 30.0,
+  "crs": "EPSG:32644",
+  "width": 495,
+  "height": 671,
+  "transform": [
+    30.0,
+    0.0,
+    409950.0,
+    0.0,
+    -30.0,
+    1452060.0
+  ],
+  "grid_origin": [
+    409950.0,
+    1452060.0
+  ],
+  "gap_fill": {
+    "method": "nearest_within_radius",
+    "max_radius_px": 3,
+    "nodata_before": 115528,
+    "nodata_after": 108511,
+    "filled_pixels": 7017,
+    "remaining_nodata": 108511,
+    "note": "Gaps farther than max_radius_px left as NoData \u2014 not interpolated as real data"
+  },
+  "warp": {
+    "src_crs": "EPSG:32644",
+    "src_epsg": 32644,
+    "src_res": [
+      30.0,
+      30.0
+    ],
+    "src_nodata": -9999.0,
+    "resampling": "bilinear"
+  },
+  "sha256": "8121b36ac73675af8f59e9bc8e8d2f1de05aebe03987b6e74739b74a45eff05b",
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_slope_deg",
+  "cleaned_at": "2026-08-27T17:41:27.005824+00:00",
+  "last_available_date": null,
+  "source_name": "Derived from Copernicus DEM GLO-30 (cached)"
+}

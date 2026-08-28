@@ -4,10 +4,15 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 data/raw/**
-data/clean/**
 data/rejected/**
 data/logs/**
 data/aoi/**
+!data/aoi/chennai_boundary.geojson
+!data/aoi/chennai_boundary.gpkg
+!data/aoi/chennai_boundary_fetch.json
+!data/aoi/reference_grid.json
+data/clean/STAGE4_FEATURE_TABLE.csv.gz
+data/features/**
 !data/raw/.gitkeep
 !data/clean/.gitkeep
 !data/rejected/.gitkeep
@@ -16,4 +21,5 @@ data/aoi/**
 *.tif
 *.pbf
 *.gpkg
+stage4_run.log
 .DS_Store

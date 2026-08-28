@@ -1,0 +1,14 @@
+{
+  "layer_id": "chennai_buildings",
+  "variable": "building_footprints",
+  "unit": "vector",
+  "feature_count": 175379,
+  "crs": "EPSG:32644",
+  "gap_fill": {
+    "method": "none"
+  },
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_buildings",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_building_footprints_vector_static.gpkg",
+  "cleaned_at": "2026-08-27T17:41:51.616992+00:00"
+}

@@ -1,0 +1,3606 @@
+{
+  "stage": "validator_passed",
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "reference_grid": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\aoi\\reference_grid.json",
+  "layers": [
+    {
+      "layer_id": "chennai_dem_m",
+      "variable": "dem",
+      "unit": "m",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\dem\\chennai_dem_m_raw.tif",
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_dem_m"
+    },
+    {
+      "layer_id": "chennai_slope_deg",
+      "variable": "slope",
+      "unit": "deg",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\dem\\chennai_slope_deg_raw.tif",
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_slope_deg"
+    },
+    {
+      "layer_id": "chennai_population",
+      "variable": "population_density",
+      "unit": "people_per_px",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\population\\chennai_population_density_raw.tif",
+      "data_type": "raster",
+      "native_resolution_m": 100.0,
+      "validation_entry_layer_id": "chennai_population"
+    },
+    {
+      "layer_id": "chennai_lst_2024-01",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-01_raw.tif",
+      "month": "2024-01",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-01",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-01-01/2024-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.694955+00:00",
+        "data_dates": [
+          "2024-01"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-01_raw.tif",
+        "checksum_sha256": "0f783d32a82c6cc930c8574ef4bb01243e0c7fbbd72870d9cbdfe0657add0fde",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-01"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-01",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-01_raw.tif",
+      "month": "2024-01",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-01",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-01-01/2024-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.701071+00:00",
+        "data_dates": [
+          "2024-01"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-01_raw.tif",
+        "checksum_sha256": "2d05823be2ffe8509d044f50067ee26abccbece209776eb1847368177fbd2dc3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-01"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-01",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-01_raw.tif",
+      "month": "2024-01",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-01",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-01-01/2024-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.701071+00:00",
+        "data_dates": [
+          "2024-01"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-01_raw.tif",
+        "checksum_sha256": "06e7e4150234fc7fcd418c6ce2d841ffe7497dfe7243011e165e77c93e9b61fa",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-01"
+    },
+    {
+      "layer_id": "chennai_lst_2024-02",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-02_raw.tif",
+      "month": "2024-02",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-02",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-02",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-02-01/2024-02-29",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.707799+00:00",
+        "data_dates": [
+          "2024-02"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-02_raw.tif",
+        "checksum_sha256": "37f33780fc2ce8c3733e505e6a73cf6f0528c8f668a9ad15baa9e0edacf7cb66",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-02"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-02",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-02_raw.tif",
+      "month": "2024-02",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-02",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-02",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-02-01/2024-02-29",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.715192+00:00",
+        "data_dates": [
+          "2024-02"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-02_raw.tif",
+        "checksum_sha256": "caf5db23a4d26e8c2417a130def3dcb2a38c005ff13b258afab6b373b8d5db8e",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-02"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-02",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-02_raw.tif",
+      "month": "2024-02",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-02",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-02",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-02-01/2024-02-29",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.718944+00:00",
+        "data_dates": [
+          "2024-02"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-02_raw.tif",
+        "checksum_sha256": "7bb868b34d1bbc999b16373742f42033a48979e3e1206fa936a1ebefaa1632a2",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-02"
+    },
+    {
+      "layer_id": "chennai_lst_2024-03",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-03_raw.tif",
+      "month": "2024-03",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-03",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-03-01/2024-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.723591+00:00",
+        "data_dates": [
+          "2024-03"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-03_raw.tif",
+        "checksum_sha256": "353b26b59ab8fecd105fd74f119286d48b010d7b0f9c69c5b1f0c87d45a298c8",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-03"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-03",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-03_raw.tif",
+      "month": "2024-03",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-03",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-03-01/2024-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.728330+00:00",
+        "data_dates": [
+          "2024-03"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-03_raw.tif",
+        "checksum_sha256": "09b02c9b402da16bce689082201514406e95cd03154d5abe1cc12761041847c8",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-03"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-03",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-03_raw.tif",
+      "month": "2024-03",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-03",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-03-01/2024-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.728330+00:00",
+        "data_dates": [
+          "2024-03"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-03_raw.tif",
+        "checksum_sha256": "729dc4fb43640a6ef52361bfb98e4e77ed2d56e5b3fe59aacf753c6cb215244c",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-03"
+    },
+    {
+      "layer_id": "chennai_lst_2024-04",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-04_raw.tif",
+      "month": "2024-04",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-04",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-04-01/2024-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.728330+00:00",
+        "data_dates": [
+          "2024-04"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-04_raw.tif",
+        "checksum_sha256": "99a3943b6d3fc482826100fb1a6f79133d0043796c647b4a479bb35ca957ed92",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-04"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-04",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-04_raw.tif",
+      "month": "2024-04",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-04",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-04-01/2024-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.739398+00:00",
+        "data_dates": [
+          "2024-04"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-04_raw.tif",
+        "checksum_sha256": "82621edc7562fcc3d4aded2b6aefeeb679453e89bb741193d762f46450d93630",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-04"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-04",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-04_raw.tif",
+      "month": "2024-04",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-04",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-04-01/2024-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.746938+00:00",
+        "data_dates": [
+          "2024-04"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-04_raw.tif",
+        "checksum_sha256": "c6b675e322709e41282b991958b5a6b00b6e66727a31f34da3863f1e9d79bda3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-04"
+    },
+    {
+      "layer_id": "chennai_lst_2024-05",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-05_raw.tif",
+      "month": "2024-05",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-05",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-05",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-05-01/2024-05-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.752327+00:00",
+        "data_dates": [
+          "2024-05"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-05_raw.tif",
+        "checksum_sha256": "7226f5a0bbeec39793f0a5bbb7c58b3da4583d57d61adc8e68af083a7b46c798",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-05"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-05",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-05_raw.tif",
+      "month": "2024-05",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-05",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-05",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-05-01/2024-05-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.755354+00:00",
+        "data_dates": [
+          "2024-05"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-05_raw.tif",
+        "checksum_sha256": "b5f165e371a6503da98d3b5f2bf9d41fe33dce0f9be76b2bbeabf266f89cc8a1",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-05"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-05",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-05_raw.tif",
+      "month": "2024-05",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-05",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-05",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-05-01/2024-05-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.761526+00:00",
+        "data_dates": [
+          "2024-05"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-05_raw.tif",
+        "checksum_sha256": "764b886fc1f0d0b17cee2d3f61dc7664c0919ffc294ce59d40c50e28d8c05846",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-05"
+    },
+    {
+      "layer_id": "chennai_lst_2024-07",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-07_raw.tif",
+      "month": "2024-07",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-07",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-07",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-07-01/2024-07-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.777338+00:00",
+        "data_dates": [
+          "2024-07"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-07_raw.tif",
+        "checksum_sha256": "ed4dc46d473d1d62b7f91c9ae3422cd28ba47de8b17ac350a7c1681bfebbcc11",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-07"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-07",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-07_raw.tif",
+      "month": "2024-07",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-07",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-07",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-07-01/2024-07-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.780207+00:00",
+        "data_dates": [
+          "2024-07"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-07_raw.tif",
+        "checksum_sha256": "b7a41d1f38077966629e6a7813a5573eac312f392e5cab7ad03a61e95da24ccd",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-07"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-07",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-07_raw.tif",
+      "month": "2024-07",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-07",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-07",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-07-01/2024-07-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.787326+00:00",
+        "data_dates": [
+          "2024-07"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-07_raw.tif",
+        "checksum_sha256": "da9b3c2fb0ae180ecd52a5998f31a96b43efb5fe8e0e3c27f134cda18c0a6bd2",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-07"
+    },
+    {
+      "layer_id": "chennai_lst_2024-08",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-08_raw.tif",
+      "month": "2024-08",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-08",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-08-01/2024-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.791347+00:00",
+        "data_dates": [
+          "2024-08"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-08_raw.tif",
+        "checksum_sha256": "f7665986622c82751065b6b64661dc2ec3fe89680e5c6c0585686f7267b72e6f",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-08"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-08",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-08_raw.tif",
+      "month": "2024-08",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-08",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-08-01/2024-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.795132+00:00",
+        "data_dates": [
+          "2024-08"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-08_raw.tif",
+        "checksum_sha256": "9cb5268c02ba46f7f71f56a265b620b8fec259529437182980adbc3f3f276923",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-08"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-08",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-08_raw.tif",
+      "month": "2024-08",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-08",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-08-01/2024-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.800100+00:00",
+        "data_dates": [
+          "2024-08"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-08_raw.tif",
+        "checksum_sha256": "16d73dc073570112e85439e94b1ba2d2decfa7c9b2730fe312ad537c0e21a4e3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-08"
+    },
+    {
+      "layer_id": "chennai_lst_2024-09",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-09_raw.tif",
+      "month": "2024-09",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2024-09",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-09",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-09-01/2024-09-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.802984+00:00",
+        "data_dates": [
+          "2024-09"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2024-09_raw.tif",
+        "checksum_sha256": "db58a10a2333c7589bd18201f17decc9d015d8b335ae4b48405a03dc0bc78a1d",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2024-09"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-09",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-09_raw.tif",
+      "month": "2024-09",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-09",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-09",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-09-01/2024-09-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.802984+00:00",
+        "data_dates": [
+          "2024-09"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-09_raw.tif",
+        "checksum_sha256": "a12497d6961d1a00c70cd47102c995759b2d22c873b3266b521a1055ece26f9e",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-09"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-09",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-09_raw.tif",
+      "month": "2024-09",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-09",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-09",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-09-01/2024-09-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.810605+00:00",
+        "data_dates": [
+          "2024-09"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-09_raw.tif",
+        "checksum_sha256": "02b405174007fe4c97b28c52b64485a992f6497da52060560bd48f43b45787d5",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-09"
+    },
+    {
+      "layer_id": "chennai_ndvi_2024-12",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-12_raw.tif",
+      "month": "2024-12",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2024-12",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-12",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-12-01/2024-12-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.829971+00:00",
+        "data_dates": [
+          "2024-12"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2024-12_raw.tif",
+        "checksum_sha256": "0f78daa2ee5a2437b8b7e680d43ff457f4970f678ba196ab31c3af224deae117",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2024-12"
+    },
+    {
+      "layer_id": "chennai_ndbi_2024-12",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-12_raw.tif",
+      "month": "2024-12",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2024-12",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2024-12",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2024-12-01/2024-12-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.829971+00:00",
+        "data_dates": [
+          "2024-12"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2024-12_raw.tif",
+        "checksum_sha256": "e16479b440ab845aa23b748ee1b4ed452663e0eb630cd573079120492fd47a43",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2024-12"
+    },
+    {
+      "layer_id": "chennai_lst_2025-01",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-01_raw.tif",
+      "month": "2025-01",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-01",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-01-01/2025-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.829971+00:00",
+        "data_dates": [
+          "2025-01"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-01_raw.tif",
+        "checksum_sha256": "ad9f2b446816f203f1ddc25a3c6d560de90e11da89747a132401439875c9b882",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-01"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-01",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-01_raw.tif",
+      "month": "2025-01",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-01",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-01-01/2025-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.844702+00:00",
+        "data_dates": [
+          "2025-01"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-01_raw.tif",
+        "checksum_sha256": "87d6c98efd8c41266c1b020327c4c508c2c19ecf7a14362402f49b2150e3c447",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-01"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-01",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-01_raw.tif",
+      "month": "2025-01",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-01",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-01-01/2025-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.850740+00:00",
+        "data_dates": [
+          "2025-01"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-01_raw.tif",
+        "checksum_sha256": "f9605c26ce62395b41fb25bee7cc31c72faaf7b95b8415ce9deb4d8019e4abaf",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-01"
+    },
+    {
+      "layer_id": "chennai_lst_2025-02",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-02_raw.tif",
+      "month": "2025-02",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-02",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-02",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-02-01/2025-02-28",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.852666+00:00",
+        "data_dates": [
+          "2025-02"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-02_raw.tif",
+        "checksum_sha256": "51751a2ec020614daec4ffd4060997f8d1b83c8f8705085d2e5d9287b861b235",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-02"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-02",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-02_raw.tif",
+      "month": "2025-02",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-02",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-02",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-02-01/2025-02-28",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.857996+00:00",
+        "data_dates": [
+          "2025-02"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-02_raw.tif",
+        "checksum_sha256": "a6027edbd98864bec32e26bf246dbbe963015b0b649227754ba6e2f468b953ff",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-02"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-02",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-02_raw.tif",
+      "month": "2025-02",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-02",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-02",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-02-01/2025-02-28",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.864449+00:00",
+        "data_dates": [
+          "2025-02"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-02_raw.tif",
+        "checksum_sha256": "8e5f23fa2b9e89735cd6677f6864feb60e0fa8255086d1fb99af48f3e5e0b188",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-02"
+    },
+    {
+      "layer_id": "chennai_lst_2025-03",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-03_raw.tif",
+      "month": "2025-03",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-03",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-03-01/2025-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.867755+00:00",
+        "data_dates": [
+          "2025-03"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-03_raw.tif",
+        "checksum_sha256": "8cef020a9c22f768b3b1812858ab543b389369c6570d1ff114ff6001b5107da3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-03"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-03",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-03_raw.tif",
+      "month": "2025-03",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-03",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-03-01/2025-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.867755+00:00",
+        "data_dates": [
+          "2025-03"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-03_raw.tif",
+        "checksum_sha256": "92bb680c1ebe4f1fc546f3141a030003d71eaa5ee954ff19a12b7cd5fe5535e3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-03"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-03",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-03_raw.tif",
+      "month": "2025-03",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-03",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-03-01/2025-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.877274+00:00",
+        "data_dates": [
+          "2025-03"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-03_raw.tif",
+        "checksum_sha256": "01e17d46ca67555a8f4abb2f951ad508478f98413ecce2fafd6be9335aded002",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-03"
+    },
+    {
+      "layer_id": "chennai_lst_2025-04",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-04_raw.tif",
+      "month": "2025-04",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-04",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-04-01/2025-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.880731+00:00",
+        "data_dates": [
+          "2025-04"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-04_raw.tif",
+        "checksum_sha256": "52079b14de73efd01497c9f22740656fd2918248be0b583ad2c4bcf38c6ed3ec",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-04"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-04",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-04_raw.tif",
+      "month": "2025-04",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-04",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-04-01/2025-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.880731+00:00",
+        "data_dates": [
+          "2025-04"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-04_raw.tif",
+        "checksum_sha256": "050e17055f94adfd4a8c6bc7fc8a0963517144af87530aee1038477ed9137282",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-04"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-04",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-04_raw.tif",
+      "month": "2025-04",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-04",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-04-01/2025-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index",
+          "reused_local": true
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:16.880731+00:00",
+        "data_dates": [
+          "2025-04"
+        ],
+        "last_available_date": null,
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-04_raw.tif",
+        "checksum_sha256": "e540cfaa9181763ba94ba10d59c7a0e50e3c2544edaf5a9abeb6f4b250b81331",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "LC08",
+          "LC09"
+        ],
+        "notes": "Reused local composite from prior extractor run",
+        "status": "ok",
+        "error": null
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-04"
+    },
+    {
+      "layer_id": "chennai_lst_2025-06",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-06_raw.tif",
+      "month": "2025-06",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-06",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-06",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-06-01/2025-06-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:48.831185+00:00",
+        "data_dates": [
+          "2025-06-03",
+          "2025-06-27",
+          "2025-06-27",
+          "2025-06-03"
+        ],
+        "last_available_date": "2025-06-27",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-06_raw.tif",
+        "checksum_sha256": "4bb1d741b978628f55225256c130eec98a0260ef16619bb1108906e6a5bc8332",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 2,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-06"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-06",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-06_raw.tif",
+      "month": "2025-06",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-06",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-06",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-06-01/2025-06-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:14:56.496458+00:00",
+        "data_dates": [
+          "2025-06-03",
+          "2025-06-27",
+          "2025-06-27",
+          "2025-06-03"
+        ],
+        "last_available_date": "2025-06-27",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-06_raw.tif",
+        "checksum_sha256": "f5a2a6e69a63c628113382c7df5649b3f71e8ca443582d57bfd7d1b9db474980",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 2,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-06"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-06",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-06_raw.tif",
+      "month": "2025-06",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-06",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-06",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-06-01/2025-06-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:15:02.722504+00:00",
+        "data_dates": [
+          "2025-06-03",
+          "2025-06-27",
+          "2025-06-27",
+          "2025-06-03"
+        ],
+        "last_available_date": "2025-06-27",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-06_raw.tif",
+        "checksum_sha256": "c9f8ce210ca4dd0f935e4cdd310775b591727069429b56064d91b5d2d6077c04",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 2,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-06"
+    },
+    {
+      "layer_id": "chennai_lst_2025-07",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-07_raw.tif",
+      "month": "2025-07",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-07",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-07",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-07-01/2025-07-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:15:12.132446+00:00",
+        "data_dates": [
+          "2025-07-05",
+          "2025-07-13",
+          "2025-07-29",
+          "2025-07-29",
+          "2025-07-13",
+          "2025-07-05"
+        ],
+        "last_available_date": "2025-07-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-07_raw.tif",
+        "checksum_sha256": "708d4d877f3987b5624715238aa45e76321df760c7fcd09cd2224febbbd7ecc5",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-07"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-07",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-07_raw.tif",
+      "month": "2025-07",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-07",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-07",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-07-01/2025-07-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:15:27.278968+00:00",
+        "data_dates": [
+          "2025-07-05",
+          "2025-07-13",
+          "2025-07-29",
+          "2025-07-29",
+          "2025-07-13",
+          "2025-07-05"
+        ],
+        "last_available_date": "2025-07-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-07_raw.tif",
+        "checksum_sha256": "254655fac44c55991584a1fe2bc81339994497ecf41835ae9733c11a86d2ef3a",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-07"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-07",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-07_raw.tif",
+      "month": "2025-07",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-07",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-07",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-07-01/2025-07-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:15:37.626670+00:00",
+        "data_dates": [
+          "2025-07-05",
+          "2025-07-13",
+          "2025-07-29",
+          "2025-07-29",
+          "2025-07-13",
+          "2025-07-05"
+        ],
+        "last_available_date": "2025-07-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-07_raw.tif",
+        "checksum_sha256": "7384095cafb77e708ccc9d79f6a749905b9b86f00f2ae8080ea6fbb7929365a5",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-07"
+    },
+    {
+      "layer_id": "chennai_lst_2025-08",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-08_raw.tif",
+      "month": "2025-08",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-08",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-08-01/2025-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:15:47.431272+00:00",
+        "data_dates": [
+          "2025-08-06",
+          "2025-08-22",
+          "2025-08-30",
+          "2025-08-30",
+          "2025-08-22",
+          "2025-08-06"
+        ],
+        "last_available_date": "2025-08-30",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-08_raw.tif",
+        "checksum_sha256": "1a6626d4d9264e5463448707085d03c668cf5309392cebab5a44b99ad7e708d9",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-08"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-08",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-08_raw.tif",
+      "month": "2025-08",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-08",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-08-01/2025-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:16:01.403452+00:00",
+        "data_dates": [
+          "2025-08-06",
+          "2025-08-22",
+          "2025-08-30",
+          "2025-08-30",
+          "2025-08-22",
+          "2025-08-06"
+        ],
+        "last_available_date": "2025-08-30",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-08_raw.tif",
+        "checksum_sha256": "7824cbf263e9bfc2bb1660088f69aed344373a7e7d9dc98cb9bbb44589b06222",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-08"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-08",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-08_raw.tif",
+      "month": "2025-08",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-08",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-08-01/2025-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:16:11.033343+00:00",
+        "data_dates": [
+          "2025-08-06",
+          "2025-08-22",
+          "2025-08-30",
+          "2025-08-30",
+          "2025-08-22",
+          "2025-08-06"
+        ],
+        "last_available_date": "2025-08-30",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-08_raw.tif",
+        "checksum_sha256": "60dd5557c7a53635912a9794c5e06798bcc7c793f017c68104d9bf5f1f14f3a3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-08"
+    },
+    {
+      "layer_id": "chennai_lst_2025-12",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-12_raw.tif",
+      "month": "2025-12",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2025-12",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-12",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-12-01/2025-12-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:18:00.238465+00:00",
+        "data_dates": [
+          "2025-12-04",
+          "2025-12-12",
+          "2025-12-20",
+          "2025-12-20",
+          "2025-12-12",
+          "2025-12-04"
+        ],
+        "last_available_date": "2025-12-20",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2025-12_raw.tif",
+        "checksum_sha256": "29c37d718ecc7bc8fc6d6978e2ada107c4ea3bcd8f118d027a8ba459363d0c44",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2025-12"
+    },
+    {
+      "layer_id": "chennai_ndvi_2025-12",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-12_raw.tif",
+      "month": "2025-12",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2025-12",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-12",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-12-01/2025-12-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:18:18.274056+00:00",
+        "data_dates": [
+          "2025-12-04",
+          "2025-12-12",
+          "2025-12-20",
+          "2025-12-20",
+          "2025-12-12",
+          "2025-12-04"
+        ],
+        "last_available_date": "2025-12-20",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2025-12_raw.tif",
+        "checksum_sha256": "7e230288d564bfdb49e8c95e894135b9ca12e1074aa16340b238e6e631f22fd6",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2025-12"
+    },
+    {
+      "layer_id": "chennai_ndbi_2025-12",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-12_raw.tif",
+      "month": "2025-12",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2025-12",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2025-12",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2025-12-01/2025-12-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:18:34.085694+00:00",
+        "data_dates": [
+          "2025-12-04",
+          "2025-12-12",
+          "2025-12-20",
+          "2025-12-20",
+          "2025-12-12",
+          "2025-12-04"
+        ],
+        "last_available_date": "2025-12-20",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2025-12_raw.tif",
+        "checksum_sha256": "ca082cae3db25206905bf391906e54b6f54703ce28b0ec7340804d44702f038c",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2025-12"
+    },
+    {
+      "layer_id": "chennai_lst_2026-01",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-01_raw.tif",
+      "month": "2026-01",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2026-01",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-01-01/2026-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:18:46.735398+00:00",
+        "data_dates": [
+          "2026-01-05",
+          "2026-01-13",
+          "2026-01-21",
+          "2026-01-29",
+          "2026-01-29",
+          "2026-01-21",
+          "2026-01-13",
+          "2026-01-05"
+        ],
+        "last_available_date": "2026-01-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-01_raw.tif",
+        "checksum_sha256": "3f76089015eb5efeb8779cc203e5ad4fd26c44d4e8878d27f086c00288f30091",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2026-01"
+    },
+    {
+      "layer_id": "chennai_ndvi_2026-01",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-01_raw.tif",
+      "month": "2026-01",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2026-01",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-01-01/2026-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:19:06.608278+00:00",
+        "data_dates": [
+          "2026-01-05",
+          "2026-01-13",
+          "2026-01-21",
+          "2026-01-29",
+          "2026-01-29",
+          "2026-01-21",
+          "2026-01-13",
+          "2026-01-05"
+        ],
+        "last_available_date": "2026-01-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-01_raw.tif",
+        "checksum_sha256": "5a4852252e1df4be760aa6dcc4931b47769fdecf0774d29c4ba2b70b33514627",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2026-01"
+    },
+    {
+      "layer_id": "chennai_ndbi_2026-01",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-01_raw.tif",
+      "month": "2026-01",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2026-01",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-01",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-01-01/2026-01-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:19:30.255689+00:00",
+        "data_dates": [
+          "2026-01-05",
+          "2026-01-13",
+          "2026-01-21",
+          "2026-01-29",
+          "2026-01-29",
+          "2026-01-21",
+          "2026-01-13",
+          "2026-01-05"
+        ],
+        "last_available_date": "2026-01-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-01_raw.tif",
+        "checksum_sha256": "38fc3a01e3892926d584ae932ae5860bc5634e359b2a243628a126298123251d",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2026-01"
+    },
+    {
+      "layer_id": "chennai_lst_2026-03",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-03_raw.tif",
+      "month": "2026-03",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2026-03",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-03-01/2026-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:20:38.865759+00:00",
+        "data_dates": [
+          "2026-03-02",
+          "2026-03-10",
+          "2026-03-18",
+          "2026-03-26",
+          "2026-03-26",
+          "2026-03-18",
+          "2026-03-10",
+          "2026-03-02"
+        ],
+        "last_available_date": "2026-03-26",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-03_raw.tif",
+        "checksum_sha256": "69f4a29a8cd397130456ad7dbe4181123446e42e7d686cceb3176bfa288fdeb0",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2026-03"
+    },
+    {
+      "layer_id": "chennai_ndvi_2026-03",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-03_raw.tif",
+      "month": "2026-03",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2026-03",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-03-01/2026-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:20:57.730184+00:00",
+        "data_dates": [
+          "2026-03-02",
+          "2026-03-10",
+          "2026-03-18",
+          "2026-03-26",
+          "2026-03-26",
+          "2026-03-18",
+          "2026-03-10",
+          "2026-03-02"
+        ],
+        "last_available_date": "2026-03-26",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-03_raw.tif",
+        "checksum_sha256": "33150108b38cf49cb669d1182b5530a24c67ca311f52ab5c6f20f141b1d488b9",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2026-03"
+    },
+    {
+      "layer_id": "chennai_ndbi_2026-03",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-03_raw.tif",
+      "month": "2026-03",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2026-03",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-03",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-03-01/2026-03-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:21:19.216942+00:00",
+        "data_dates": [
+          "2026-03-02",
+          "2026-03-10",
+          "2026-03-18",
+          "2026-03-26",
+          "2026-03-26",
+          "2026-03-18",
+          "2026-03-10",
+          "2026-03-02"
+        ],
+        "last_available_date": "2026-03-26",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-03_raw.tif",
+        "checksum_sha256": "f6c86d2b298f53b7035c98207d3ef7c6c6b75dd31eb555f1e6a76dc02d5b17e0",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 3,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2026-03"
+    },
+    {
+      "layer_id": "chennai_lst_2026-04",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-04_raw.tif",
+      "month": "2026-04",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2026-04",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-04-01/2026-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:21:40.370076+00:00",
+        "data_dates": [
+          "2026-04-03",
+          "2026-04-11",
+          "2026-04-19",
+          "2026-04-27",
+          "2026-04-27",
+          "2026-04-19",
+          "2026-04-11",
+          "2026-04-03"
+        ],
+        "last_available_date": "2026-04-27",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-04_raw.tif",
+        "checksum_sha256": "57873e548ed59942a8d16f0a8f7da53193d1af6fcfe575675ee5361cfc604535",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2026-04"
+    },
+    {
+      "layer_id": "chennai_ndvi_2026-04",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-04_raw.tif",
+      "month": "2026-04",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2026-04",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-04-01/2026-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:22:04.379218+00:00",
+        "data_dates": [
+          "2026-04-03",
+          "2026-04-11",
+          "2026-04-19",
+          "2026-04-27",
+          "2026-04-27",
+          "2026-04-19",
+          "2026-04-11",
+          "2026-04-03"
+        ],
+        "last_available_date": "2026-04-27",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-04_raw.tif",
+        "checksum_sha256": "c82e6240176eaba6ebf642f663b80227cbdac46193b93a853c0c0b7e2b702a3f",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2026-04"
+    },
+    {
+      "layer_id": "chennai_ndbi_2026-04",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-04_raw.tif",
+      "month": "2026-04",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2026-04",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-04",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-04-01/2026-04-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:22:18.821803+00:00",
+        "data_dates": [
+          "2026-04-03",
+          "2026-04-11",
+          "2026-04-19",
+          "2026-04-27",
+          "2026-04-27",
+          "2026-04-19",
+          "2026-04-11",
+          "2026-04-03"
+        ],
+        "last_available_date": "2026-04-27",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-04_raw.tif",
+        "checksum_sha256": "8ab51bcbce3c04eb2e63f15872f0f30fa9630fb800abfded0a1161b1ffa945fc",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2026-04"
+    },
+    {
+      "layer_id": "chennai_lst_2026-05",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-05_raw.tif",
+      "month": "2026-05",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2026-05",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-05",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-05-01/2026-05-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:22:30.341435+00:00",
+        "data_dates": [
+          "2026-05-05",
+          "2026-05-13",
+          "2026-05-21",
+          "2026-05-29",
+          "2026-05-29",
+          "2026-05-21",
+          "2026-05-13",
+          "2026-05-05"
+        ],
+        "last_available_date": "2026-05-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-05_raw.tif",
+        "checksum_sha256": "811b62e636defe9bcf921db5bcc9bc235e09bd5c2d1b709e59aea3eca46d50f3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2026-05"
+    },
+    {
+      "layer_id": "chennai_ndvi_2026-05",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-05_raw.tif",
+      "month": "2026-05",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2026-05",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-05",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-05-01/2026-05-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:22:50.593909+00:00",
+        "data_dates": [
+          "2026-05-05",
+          "2026-05-13",
+          "2026-05-21",
+          "2026-05-29",
+          "2026-05-29",
+          "2026-05-21",
+          "2026-05-13",
+          "2026-05-05"
+        ],
+        "last_available_date": "2026-05-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-05_raw.tif",
+        "checksum_sha256": "555cb4cd2829c52c3303d7e9d4feaa9b2497583c04a6b7cc26967c02f6851a9b",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2026-05"
+    },
+    {
+      "layer_id": "chennai_ndbi_2026-05",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-05_raw.tif",
+      "month": "2026-05",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2026-05",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-05",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-05-01/2026-05-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:23:05.354930+00:00",
+        "data_dates": [
+          "2026-05-05",
+          "2026-05-13",
+          "2026-05-21",
+          "2026-05-29",
+          "2026-05-29",
+          "2026-05-21",
+          "2026-05-13",
+          "2026-05-05"
+        ],
+        "last_available_date": "2026-05-29",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-05_raw.tif",
+        "checksum_sha256": "7c72c8a717b6db821b1172bdad178b7fefe9a46bea4a3320fd4f4d806c397ef7",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2026-05"
+    },
+    {
+      "layer_id": "chennai_lst_2026-06",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-06_raw.tif",
+      "month": "2026-06",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2026-06",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-06",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-06-01/2026-06-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:23:18.874930+00:00",
+        "data_dates": [
+          "2026-06-06",
+          "2026-06-14",
+          "2026-06-22",
+          "2026-06-30",
+          "2026-06-30",
+          "2026-06-22",
+          "2026-06-14",
+          "2026-06-06"
+        ],
+        "last_available_date": "2026-06-30",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-06_raw.tif",
+        "checksum_sha256": "ded05f453581d34505970f260d8e59969c169b757c4af9c96234e120c4a50fe5",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2026-06"
+    },
+    {
+      "layer_id": "chennai_ndvi_2026-06",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-06_raw.tif",
+      "month": "2026-06",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2026-06",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-06",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-06-01/2026-06-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:23:38.760302+00:00",
+        "data_dates": [
+          "2026-06-06",
+          "2026-06-14",
+          "2026-06-22",
+          "2026-06-30",
+          "2026-06-30",
+          "2026-06-22",
+          "2026-06-14",
+          "2026-06-06"
+        ],
+        "last_available_date": "2026-06-30",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-06_raw.tif",
+        "checksum_sha256": "3573d78261f98c2fd466426191bc92b7065eec09a0e228df1d8fb47c8de3ae4d",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2026-06"
+    },
+    {
+      "layer_id": "chennai_ndbi_2026-06",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-06_raw.tif",
+      "month": "2026-06",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2026-06",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-06",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-06-01/2026-06-30",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:23:53.301754+00:00",
+        "data_dates": [
+          "2026-06-06",
+          "2026-06-14",
+          "2026-06-22",
+          "2026-06-30",
+          "2026-06-30",
+          "2026-06-22",
+          "2026-06-14",
+          "2026-06-06"
+        ],
+        "last_available_date": "2026-06-30",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-06_raw.tif",
+        "checksum_sha256": "0421669496fcce5c68f3177992f0b866820e467b8801d9ab25c3b303c5824e7f",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "median_clear_qa_pixel",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 4,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2026-06"
+    },
+    {
+      "layer_id": "chennai_lst_2026-08",
+      "variable": "lst",
+      "unit": "k",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-08_raw.tif",
+      "month": "2026-08",
+      "fetch_record": {
+        "layer_id": "chennai_lst_2026-08",
+        "variable": "lst",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-08-01/2026-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "lst",
+          "unit": "k"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:24:18.975630+00:00",
+        "data_dates": [
+          "2026-08-01",
+          "2026-08-09",
+          "2026-08-09",
+          "2026-08-01"
+        ],
+        "last_available_date": "2026-08-09",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_lst_2026-08_raw.tif",
+        "checksum_sha256": "f82ec8d979d96695c38e6e8941f9afcf6fd1c8542764ebd592329fd85198dd7e",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "Source last scene date 2026-08-09 is older than pipeline present date 2026-08-27",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 2,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_lst_2026-08"
+    },
+    {
+      "layer_id": "chennai_ndvi_2026-08",
+      "variable": "ndvi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-08_raw.tif",
+      "month": "2026-08",
+      "fetch_record": {
+        "layer_id": "chennai_ndvi_2026-08",
+        "variable": "ndvi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-08-01/2026-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndvi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:24:29.158716+00:00",
+        "data_dates": [
+          "2026-08-01",
+          "2026-08-09",
+          "2026-08-09",
+          "2026-08-01"
+        ],
+        "last_available_date": "2026-08-09",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndvi_2026-08_raw.tif",
+        "checksum_sha256": "56d06b9b3811a22e4e864f18ef4175e45eb366de39897e87622e0d308d0e97b3",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "Source last scene date 2026-08-09 is older than pipeline present date 2026-08-27",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 2,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndvi_2026-08"
+    },
+    {
+      "layer_id": "chennai_ndbi_2026-08",
+      "variable": "ndbi",
+      "unit": "index",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-08_raw.tif",
+      "month": "2026-08",
+      "fetch_record": {
+        "layer_id": "chennai_ndbi_2026-08",
+        "variable": "ndbi",
+        "source_name": "Landsat 8/9 Collection 2 Level-2 (Planetary Computer)",
+        "query_parameters": {
+          "month": "2026-08",
+          "bbox": [
+            80.1696,
+            12.951799999999999,
+            80.306,
+            13.133799999999999
+          ],
+          "datetime": "2026-08-01/2026-08-31",
+          "composite": "monthly_median_qa_masked",
+          "variable": "ndbi",
+          "unit": "index"
+        },
+        "resolved_source_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+        "resolved_host": "planetarycomputer.microsoft.com",
+        "fetch_timestamp": "2026-08-27T15:24:37.509597+00:00",
+        "data_dates": [
+          "2026-08-01",
+          "2026-08-09",
+          "2026-08-09",
+          "2026-08-01"
+        ],
+        "last_available_date": "2026-08-09",
+        "local_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\landsat\\chennai_ndbi_2026-08_raw.tif",
+        "checksum_sha256": "630275d2081f65293a6c903cb5b50ef4907cb79a22e28c96c4a7c87f8363f2bb",
+        "checksum_md5_source": null,
+        "checksum_md5_computed": null,
+        "native_crs": "EPSG:32644",
+        "native_resolution_m": 30.0,
+        "sensors": [
+          "landsat-8",
+          "landsat-9"
+        ],
+        "notes": "Source last scene date 2026-08-09 is older than pipeline present date 2026-08-27",
+        "status": "ok",
+        "error": null,
+        "extra": {
+          "n_scenes_used": 2,
+          "gap_month": false
+        }
+      },
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_ndbi_2026-08"
+    },
+    {
+      "layer_id": "chennai_weather_airtemp",
+      "variable": "air_temperature",
+      "unit": "celsius",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\weather\\chennai_airtemp_era5_daily.json",
+      "data_type": "timeseries",
+      "validation_entry_layer_id": "chennai_weather_airtemp"
+    },
+    {
+      "layer_id": "geofabrik_osm_pbf",
+      "variable": "osm_snapshot",
+      "unit": "file",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\osm\\southern-zone-latest.osm.pbf",
+      "data_type": "file",
+      "pin": {
+        "resolved_source_url": "https://download.geofabrik.de/asia/india/southern-zone-latest.osm.pbf",
+        "md5_url": "https://download.geofabrik.de/asia/india/southern-zone-latest.osm.pbf.md5",
+        "source_md5": "39f1f3360041b1272be90a066386d6dd",
+        "computed_md5": "e791d75a5d66a4d6b5816c1a7a3293e7",
+        "md5_match": false,
+        "pinned_at": "2026-08-27T15:14:14.546720+00:00",
+        "data_dates": [
+          "2026-08-27"
+        ],
+        "geofabrik_md5_file_raw": "39f1f3360041b1272be90a066386d6dd  southern-zone-latest.osm.pbf"
+      },
+      "validation_entry_layer_id": "geofabrik_osm_pbf"
+    },
+    {
+      "layer_id": "chennai_buildings",
+      "variable": "building_footprints",
+      "unit": "vector",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\osm\\chennai_buildings.gpkg",
+      "data_type": "vector",
+      "validation_entry_layer_id": "chennai_buildings"
+    },
+    {
+      "layer_id": "chennai_roads",
+      "variable": "road_network",
+      "unit": "vector",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\osm\\chennai_roads.gpkg",
+      "data_type": "vector",
+      "validation_entry_layer_id": "chennai_roads"
+    },
+    {
+      "layer_id": "chennai_building_density",
+      "variable": "building_density",
+      "unit": "fraction",
+      "path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\raw\\osm\\chennai_building_density_raw.tif",
+      "data_type": "raster",
+      "validation_entry_layer_id": "chennai_building_density"
+    }
+  ]
+}

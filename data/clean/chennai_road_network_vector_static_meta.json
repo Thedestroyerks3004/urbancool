@@ -1,0 +1,14 @@
+{
+  "layer_id": "chennai_roads",
+  "variable": "road_network",
+  "unit": "vector",
+  "feature_count": 34008,
+  "crs": "EPSG:32644",
+  "gap_fill": {
+    "method": "none"
+  },
+  "validation_report": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\logs\\validation_report.json",
+  "validation_entry_layer_id": "chennai_roads",
+  "clean_path": "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\clean\\chennai_road_network_vector_static.gpkg",
+  "cleaned_at": "2026-08-27T17:41:53.898922+00:00"
+}

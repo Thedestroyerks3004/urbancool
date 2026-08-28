@@ -1,0 +1,33 @@
+{
+  "source_name": "GADM 4.1 India ADM2",
+  "query_parameters": {
+    "country": "IND",
+    "level": 2,
+    "filter": "Chennai"
+  },
+  "resolved_source_url": "https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_IND_2.json.zip",
+  "fetch_timestamp": "2026-08-26T05:54:22.079117+00:00",
+  "host": "geodata.ucdavis.edu",
+  "data_dates": [
+    "GADM 4.1 (static administrative)"
+  ],
+  "feature_count": 1,
+  "name_columns_used": [
+    "NAME_1",
+    "NL_NAME_1",
+    "NAME_2",
+    "VARNAME_2",
+    "NL_NAME_2"
+  ],
+  "output_crs_epsg": 32644,
+  "output_files": [
+    "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\aoi\\chennai_boundary.geojson",
+    "D:\\UrbanCool\\new\\chennai_uhi_pipeline\\data\\aoi\\chennai_boundary.gpkg"
+  ],
+  "bbox_32644": [
+    409959.5717963241,
+    1431937.9509603514,
+    424770.7343713128,
+    1452054.4922446692
+  ]
+}
