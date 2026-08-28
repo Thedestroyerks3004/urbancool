@@ -35,6 +35,43 @@ Every layer gets: provenance allow-list, checksum (or explicit `SKIPPED`), tempo
 ### 3 — CLEANER
 Passed layers only → EPSG:32644 → shared grid → AOI polygon mask → small-gap nearest fill (r≤3 px) → `chennai_{var}_{unit}_{yyyy-mm}_{res}m.tif` + `_meta.json` sidecar → `CLEAN_DATASET_SUMMARY.json`.
 
+## Work Completed and Remaining
+
+### Completed so far
+
+- Stage 1 extraction is complete. The pipeline has recorded provenance for the Chennai AOI, Landsat LST/NDVI/NDBI, DEM, OSM buildings and roads, population, land cover, and Open-Meteo air-temperature inputs.
+- Stage 2 validation is complete for the current data version. Provenance, allowlists, checksums, dates, AOI coverage, CRS, resolution, sensor consistency, structure, and value-range checks are implemented. Products below the 90% coverage threshold are rejected rather than silently repaired.
+- Stage 3 cleaning is complete. Accepted products are reprojected to `EPSG:32644`, aligned to the locked 30 m grid, clipped to the Chennai polygon, gap-filled only within the configured three-pixel limit, and written with metadata sidecars.
+- The modeling manifest is locked to 22 common healthy months and records 66 monthly raster references, six static layers, and the required weather joins.
+- Stage 4 has a working feature-builder implementation and a 150 m analysis-cell grid. A provisional feature table exists, but it is not accepted as final because required fields still contain substantial null values and the current rebuild has not completed its auxiliary remote data retrieval.
+
+### Implemented modules
+
+| Module | Responsibility |
+|---|---|
+| [`src/chennai_uhi/config.py`](src/chennai_uhi/config.py) | Load and validate YAML configuration. |
+| [`src/chennai_uhi/aoi.py`](src/chennai_uhi/aoi.py) | Resolve, store, and validate the Chennai area of interest. |
+| [`src/chennai_uhi/grid.py`](src/chennai_uhi/grid.py) | Define the locked 30 m reference grid in `EPSG:32644`. |
+| [`src/chennai_uhi/extractor/`](src/chennai_uhi/extractor/) | Extract Landsat, DEM, land cover, OSM, population, and weather data with manifests and logs. |
+| [`src/chennai_uhi/validator/`](src/chennai_uhi/validator/) | Run standard and standalone validation checks and produce rejection reports. |
+| [`src/chennai_uhi/cleaner/`](src/chennai_uhi/cleaner/) | Reproject, align, mask, gap-fill, and summarize validator-passed products. |
+| [`src/chennai_uhi/cli.py`](src/chennai_uhi/cli.py) | Expose the pipeline stages through the `chennai-uhi` command. |
+| [`scripts/build_stage4_features.py`](scripts/build_stage4_features.py) | Build the 150 m cell grid and assemble the modeling feature table. |
+| [`scripts/build_modeling_manifest.py`](scripts/build_modeling_manifest.py) | Create and validate the locked modeling manifest. |
+| [`scripts/build_extractor_report.py`](scripts/build_extractor_report.py) | Build extractor inventory and provenance reports. |
+| [`tests/test_core.py`](tests/test_core.py) | Cover core configuration, grid, and validation behavior. |
+
+### What needs to be done next
+
+1. Finish the Stage 4 feature-building run and confirm that albedo and wind retrievals complete successfully.
+2. Validate the final table for the exact manifest month set, deterministic cell IDs, expected row scope, grid geometry, CRS, scene-date joins, required columns, null rates, and coverage exclusions.
+3. Replace the provisional feature table and reports only after those checks pass. Keep the synthetic population label on every affected row.
+4. Train and evaluate separate models for each typology. Record metrics, feature importance, and uncertainty rather than producing one unqualified city-wide model.
+5. Run SHAP analysis and generate cell-level predictions and heat-risk rankings.
+6. Produce the final decision-support deliverables, including maps, tables, methodology, limitations, and reproducibility details.
+
+Model training, SHAP analysis, prediction, ranking, and final deliverable generation have not started yet. See [`STATUS_REPORT.md`](STATUS_REPORT.md) and [`DATA_STATUS_REPORT.md`](DATA_STATUS_REPORT.md) for the detailed current state and validation evidence.
+
 ## Setup
 
 ```bash
