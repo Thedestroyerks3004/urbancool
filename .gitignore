@@ -14,6 +14,14 @@ data/aoi/**
 data/clean/STAGE4_FEATURE_TABLE.csv.gz
 data/features/**
 !data/features/chennai_uhi_feature_table_complete.parquet
+!data/features/chennai_uhi_feature_table_classified.parquet
+!data/features/retrofit_dataset.parquet
+!data/features/openspace_dataset.parquet
+!data/features/INTERVENTION_CLASSIFICATION_RULES.md
+!data/features/chennai_uhi_feature_table_complete.csv
+!data/features/chennai_uhi_feature_table_classified.csv
+!data/features/retrofit_dataset.csv
+!data/features/openspace_dataset.csv
 !data/features/FEATURE_TABLE_COMPLETE_QUALITY.json
 !data/features/FEATURE_TABLE_COMPLETE_REPORT.md
 !data/raw/.gitkeep
