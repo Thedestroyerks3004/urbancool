@@ -4,12 +4,14 @@ credentials/
 *.pem
 *.key
 
-# Raw/derived geospatial data and model training outputs -- large, regenerable via the
-# pipeline scripts, not source
+# Raw geospatial source data and model training outputs -- large, regenerable via the
+# pipeline scripts, not needed to run the app. backend/cache/ is the ONE exception: it's
+# the pre-built feature stack the running app actually reads at startup, so it IS
+# committed (via Git LFS -- see .gitattributes) so a fresh clone works without also
+# needing the multi-GB source data or a from-scratch rebuild.
 data/
 model_output/
 model_output_*/
-backend/cache/
 catboost_info/
 pipeline/**/__pycache__/
 **/__pycache__/
