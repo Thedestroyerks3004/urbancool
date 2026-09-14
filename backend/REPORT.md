@@ -1,4 +1,11 @@
-# Urban Cool — Backend + Design Prototype Report
+# Urban Cool — Backend Build Report (historical)
+
+> **This is a point-in-time build report from the backend's initial implementation
+> session.** The real Next.js frontend, all 7 interventions, and the performance/
+> resolution work described as "not built yet" or as open limitations below have since
+> been completed — see the [project root README](../README.md) for the current
+> architecture, API, and status. Kept here for the original design rationale and
+> real numbers from that first end-to-end run.
 
 This covers PART A (FastAPI backend, fully built and tested end-to-end against the running
 server, not just code-reviewed) and the design-mockup phase of PART B (a real interactive
