@@ -12,7 +12,19 @@ $RootDir = $PSScriptRoot
 $BackendDir = Join-Path $RootDir "backend"
 $FrontendDir = Join-Path $RootDir "frontend"
 $LogDir = Join-Path $RootDir ".run-logs"
-$PythonBin = "C:\Users\ckkav\AppData\Local\Programs\Python\Python311\python.exe"
+
+# Auto-detect Python from PATH instead of a hardcoded machine-specific install path --
+# a hardcoded path here means the script silently fails to even launch the backend on
+# any machine other than the one it was written on, and the failure just LOOKS like a
+# slow startup (the health check below spins for the full timeout before reporting it).
+$PythonCmd = Get-Command python -ErrorAction SilentlyContinue
+if (-not $PythonCmd) { $PythonCmd = Get-Command py -ErrorAction SilentlyContinue }
+if (-not $PythonCmd) {
+    Write-Host "ERROR: No 'python' (or 'py') found on PATH. Install Python 3.11+ and make sure it's on PATH, then re-run this script."
+    exit 1
+}
+$PythonBin = $PythonCmd.Source
+Write-Host "Using Python: $PythonBin"
 
 $BackendHost = "127.0.0.1"
 $BackendPort = 8000
@@ -75,12 +87,34 @@ Write-Host "Urban Cool -- end-to-end launch"
 Write-Host "====================================================="
 
 Write-Host ""
-Write-Host "Step 1/4: freeing ports $BackendPort and $FrontendPort if already in use ..."
+Write-Host "Step 1/5: checking dependencies are actually installed ..."
+& $PythonBin -c "import fastapi, uvicorn, catboost, rasterio, geopandas, shap" 2>$null
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "ERROR: backend Python packages are missing. Run this first:"
+    Write-Host "  cd backend; $PythonBin -m pip install -r requirements.txt"
+    exit 1
+}
+if (-not (Test-Path (Join-Path $FrontendDir "node_modules"))) {
+    Write-Host "ERROR: frontend dependencies are missing. Run this first:"
+    Write-Host "  cd frontend; npm install"
+    exit 1
+}
+if (-not (Test-Path (Join-Path $BackendDir "cache\feature_stack_10m.npz"))) {
+    Write-Host "ERROR: backend\cache\feature_stack_10m.npz is missing or empty."
+    Write-Host "This is a Git LFS file -- if it's a few hundred bytes of text instead of"
+    Write-Host "~170MB, Git LFS wasn't installed before cloning. Run:"
+    Write-Host "  git lfs install; git lfs pull"
+    exit 1
+}
+Write-Host "Dependencies OK."
+
+Write-Host ""
+Write-Host "Step 2/5: freeing ports $BackendPort and $FrontendPort if already in use ..."
 Free-Port $BackendPort
 Free-Port $FrontendPort
 
 Write-Host ""
-Write-Host "Step 2/4: starting backend (this loads the cached feature stack + trained model into memory) ..."
+Write-Host "Step 3/5: starting backend (this loads the cached feature stack + trained model into memory) ..."
 $backendJob = Start-Job -ScriptBlock {
     param($dir, $py, $bHost, $bPort)
     Set-Location $dir
@@ -99,7 +133,7 @@ if (-not (Wait-ForHttp "$BackendUrl/api/v1/health" "Backend" 60)) {
 }
 
 Write-Host ""
-Write-Host "Step 3/4: starting frontend ..."
+Write-Host "Step 4/5: starting frontend ..."
 $frontendJob = Start-Job -ScriptBlock {
     param($dir)
     Set-Location $dir
@@ -118,7 +152,7 @@ if (-not (Wait-ForHttp $FrontendUrl "Frontend" 60)) {
 }
 
 Write-Host ""
-Write-Host "Step 4/4: ready."
+Write-Host "Step 5/5: ready."
 Write-Host "====================================================="
 Write-Host "Backend:  $BackendUrl  (docs at $BackendUrl/docs)"
 Write-Host "Frontend: $FrontendUrl"
