@@ -20,11 +20,16 @@ from scipy.ndimage import uniform_filter
 
 from app.albedo import compute_albedo_from_raw_bands, ALBEDO_METHOD_METADATA
 
+# Computed from this file's own location (backend/app/feature_stack.py -> project root
+# is 3 directories up) instead of a hardcoded drive letter/username, so this runs
+# correctly regardless of where the project is checked out or which OS it's on.
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # Where the offline pipeline (unnecessary/pipeline/) wrote its output. If you change
 # these, the pipeline scripts that write to them must be changed to match, or this
 # module will find nothing and every feature will come back as NaN.
-DATA_DIR = "D:\\Projects\\UC\\data\\validated"
-CACHE_DIR = "D:\\Projects\\UC\\backend\\cache"
+DATA_DIR = os.path.join(PROJECT_ROOT, "data", "validated")
+CACHE_DIR = os.path.join(PROJECT_ROOT, "backend", "cache")
 
 SENTINEL2_BANDS_DIR = os.path.join(DATA_DIR, "sentinel2_10m_monthly_least_cloudy")
 NDVI_DIR = os.path.join(DATA_DIR, "ndvi_10m_monthly")

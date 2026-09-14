@@ -16,13 +16,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_absolute_error
 from catboost import CatBoostRegressor, Pool
 
-from app.feature_stack import FEATURE_NAMES, build_feature_stack
+from app.feature_stack import FEATURE_NAMES, build_feature_stack, PROJECT_ROOT
 
 # Where the trained model is saved/loaded. backend/app/state.py reads from here at
 # startup -- retraining (train_native_10m_model, at the bottom of this file) overwrites
 # both files, and the running server must be restarted to pick up a newly trained model
 # (it's only loaded once, not watched for changes).
-MODELS_DIR = "D:\\Projects\\UC\\backend\\models"
+MODELS_DIR = os.path.join(PROJECT_ROOT, "backend", "models")
 MODEL_PATH = os.path.join(MODELS_DIR, "heat_vulnerability_native10m.cbm")
 MODEL_METADATA_PATH = os.path.join(MODELS_DIR, "heat_vulnerability_native10m_metadata.npz")
 
