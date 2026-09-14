@@ -46,13 +46,10 @@ resolution-honesty audit.
                                     │
                                     ▼
                      ┌───────────────────────────┐
-                     │   pipeline/ (run offline,     │
-                     │   not at request time)         │
-                     │     fetching/  (Earth Engine,   │
-                     │       OSM Overpass)              │
-                     │     derive/  (NDVI/NDWI, LULC)   │
-                     │     health/, resolution/          │
-                     │       (validation utilities)      │
+                     │   unnecessary/pipeline/       │
+                     │   (run offline, once, not at   │
+                     │    request time -- see           │
+                     │    unnecessary/README.md)         │
                      └───────────────────────────┘
 ```
 
@@ -162,42 +159,14 @@ Next.js 16 (App Router) + React 19 + MapLibre GL + TanStack Query + Tailwind.
 
 **This is not a live feed.** The app serves a pre-built, cached feature stack
 (`backend/cache/feature_stack_10m.npz`, loaded once at API startup); drawing a region
-never triggers a fresh satellite fetch. That cache is built offline from `pipeline/`'s
-output, re-run manually whenever the underlying data needs refreshing:
+never triggers a fresh satellite fetch. That cache was built offline, once, from real
+Sentinel-2/Landsat/ECOSTRESS/OSM data — the scripts that did that, plus the earlier
+feasibility/audit write-ups, live in **[`unnecessary/`](unnecessary/)**, kept out of the
+main tree since they're not part of the running app: see
+[`unnecessary/README.md`](unnecessary/README.md) for what's in there and why.
 
-`pipeline/` is organized by what each script actually does — nothing here is unused;
-this is the complete, current list:
-
-```
-pipeline/
-  common/                            shared helpers, imported by the folders below
-    study_area.py                      AOI bounds, Earth Engine init
-    thresholds.py                      every pass/fail number, named in one place
-    tiled_download.py                  chunked Earth Engine raster download
-    osm_reference.py                   Overpass query + recursive-subdivision fetch
-    sentinel2_composite.py             least-cloudy monthly compositing logic
-  fetching/                          scripts that call an external API
-    fetch_sentinel2_10m_monthly_least_cloudy.py   Sentinel-2 bands (Earth Engine)
-    fetch_lst_30m_monthly.py                      Landsat LST (Earth Engine)
-    fetch_lst_ecostress_monthly.py                ECOSTRESS LST (Earth Engine)
-    fetch_building_footprints.py                  OSM buildings (Overpass)
-    fetch_road_network.py                         OSM roads (Overpass)
-  derive/                            processes already-fetched files, no API calls
-    derive_monthly_ndvi_ndwi.py        NDVI/NDWI from the fetched Sentinel-2 bands
-    train_and_apply_monthly_lulc.py    land-cover classifier, applied monthly
-  health/                            standalone validation utility
-    check_all_data_health.py           sanity-checks every validated raster/vector
-  resolution/                        standalone validation utility
-    check_resolution_disqualifications.py   flags any band that isn't truly 10m
-```
-
-Every `fetching/` and `derive/` script prints its own real KEEP/DROP verdict against a
-named threshold in `pipeline/common/thresholds.py` — nothing is assumed to have worked
-silently.
-
-See [`DATA_REPORT.md`](DATA_REPORT.md) for the full dataset-by-dataset
-report (sources, resolution honesty, temporal coverage, what was dropped and why) and
-[`data-audit/`](data-audit/) for the earlier feasibility and pipeline-status audits.
+See [`DATA_REPORT.md`](DATA_REPORT.md) for the full dataset-by-dataset report (sources,
+resolution honesty, temporal coverage, what was dropped and why).
 
 ## Known limitations (disclosed, not hidden)
 

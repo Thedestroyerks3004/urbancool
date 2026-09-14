@@ -7,7 +7,7 @@
 **Requested timeframe:** 2021-01-01 to 2026-08-31 (monthly cadence)
 **Resolution policy:** 10m-or-finer required; no downscaling, no interpolation, no coarser silent substitutes. Any exception is disclosed explicitly, never presented as native.
 
-This report supersedes all earlier interim status reports in `data-audit/`. It reflects the actual, verified state of every file on disk as of this writing — every dataset below was independently opened and health-checked, not assumed from historical logs.
+This report supersedes all earlier interim status reports in `unnecessary/data-audit/`. It reflects the actual, verified state of every file on disk as of this writing — every dataset below was independently opened and health-checked, not assumed from historical logs.
 
 ---
 
@@ -45,7 +45,7 @@ The AOI was narrowed once during this project, from an original Chennai-wide box
 - **Validation:** physical range check (−1 to 1); all 45 passed
 - **File location:** `data/validated/water_ndwi_10m_monthly/ndwi_10m_YYYY-MM.tif`
 - **Size:** 791MB
-- **Note:** this supersedes an earlier Track-A attempt (150m grid, old AOI) that was formally DROPped — even after a full threshold-calibration sweep, IoU against a reference marsh boundary topped out at 0.199 against a required 0.60. That earlier result is preserved in `data-audit/pipeline-status-report.md` for reference; it does not apply to the current native-10m, single-date approach, which was not re-validated against a reference marsh boundary and should be treated as an uncalibrated NDWI signal.
+- **Note:** this supersedes an earlier Track-A attempt (150m grid, old AOI) that was formally DROPped — even after a full threshold-calibration sweep, IoU against a reference marsh boundary topped out at 0.199 against a required 0.60. That earlier result is preserved in `unnecessary/data-audit/pipeline-status-report.md` for reference; it does not apply to the current native-10m, single-date approach, which was not re-validated against a reference marsh boundary and should be treated as an uncalibrated NDWI signal.
 
 ### 2.4 Land Use / Land Cover (LULC), monthly, native-10m classifier
 - **Status:** ✅ KEEP — 45 of 45 available months
@@ -126,7 +126,7 @@ The AOI was narrowed once during this project, from an original Chennai-wide box
 |---|---|---|
 | NDBI / built-up index (Sentinel-2 SWIR B11/B12) | DROP | Earth Engine confirms B11 native resolution = 20m via `projection().nominalScale()` — physically disqualified under the 10m-or-finer rule; not fetched further |
 | Elevation / DEM (Copernicus GLO-30) | DROP | Confirmed native resolution = 30.92m; no public DEM finer than 30m exists for this region |
-| Water body via JRC Global Surface Water (Track A, old AOI, 150m grid) | DROP | Best-achievable IoU after a full NDWI-threshold calibration sweep = 0.199 against a required 0.60 — the vegetated Pallikaranai marsh systematically defeats optical water detection at this scale (see `data-audit/` for full detail; superseded by the un-validated native-10m NDWI in §2.3) |
+| Water body via JRC Global Surface Water (Track A, old AOI, 150m grid) | DROP | Best-achievable IoU after a full NDWI-threshold calibration sweep = 0.199 against a required 0.60 — the vegetated Pallikaranai marsh systematically defeats optical water detection at this scale (see `unnecessary/data-audit/` for full detail; superseded by the un-validated native-10m NDWI in §2.3) |
 | LST via Landsat + TsHARP thermal sharpening to 10m | DROP | Real regression against 2,069,440 paired pixels: R² = 0.179 (initial full-window attempt) / 0.179 (retried), against a required 0.20 — the vegetation-temperature relationship in this corridor is too weak to justify manufacturing 10m thermal detail from a coarser source |
 | Population density | DROP (no fetch attempted) | WorldPop is 100m-native and itself a modeled/dasymetric surface (not a direct measurement); no genuine 10m population source exists publicly. Not fetched under the 10m-only, no-downscaling policy. |
 | Demographic vulnerability | DROP (no fetch attempted) | Same constraint as population; Census data is ward-polygon-level, not gridded at all |
@@ -209,13 +209,19 @@ Each folder also contains its own `feature_importance_report*.csv`, `heat_vulner
 
 ## 7. Full folder map
 
+> Folder map as of this report's writing. `pipeline\` and `data-audit\` have since moved
+> under `unnecessary\` (see the project root README) to keep the main tree to just the
+> running app; their contents are unchanged. `data\raw\` has since been removed (it was
+> write-only staging, nothing reads it) -- only `data\validated\` remains.
+
 ```
 D:\Projects\UC\
   DATA_REPORT.md                              <- this file
-  data-audit\
-    resolution-honesty-audit-2026.md          (earlier planning-stage audit)
-    pipeline-status-report.md                 (earlier interim status, partially superseded by this report)
-  pipeline\                                    (all fetch/validate/decide/model scripts, one per dataset or model run)
+  unnecessary\
+    data-audit\
+      resolution-honesty-audit-2026.md        (earlier planning-stage audit)
+      pipeline-status-report.md               (earlier interim status, partially superseded by this report)
+    pipeline\                                  (all fetch/validate/decide/model scripts, one per dataset or model run)
   data\
     raw\        <- pre-validation downloads, kept for traceability
     validated\  <- only KEEP-decision outputs land here
