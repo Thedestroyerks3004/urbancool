@@ -4,7 +4,7 @@ import requests
 import geopandas
 from shapely.geometry import LineString
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from pipeline.common import study_area
 from pipeline.common import osm_reference

@@ -157,11 +157,22 @@ Next.js 16 (App Router) + React 19 + MapLibre GL + TanStack Query + Tailwind.
 
 ## Data pipeline
 
-`pipeline/` holds the fetch/validate scripts behind every feature (Sentinel-2 10m
-monthly least-cloudy composites, Landsat 30m and ECOSTRESS LST, OSM building/road
-vectors, WorldPop). Each script prints its own real KEEP/DROP verdict against a named
-threshold in `pipeline/common/thresholds.py` — nothing is assumed to have worked
-silently. See [`DATA_REPORT.md`](DATA_REPORT.md) for the full dataset-by-dataset
+**This is not a live feed.** The app serves a pre-built, cached feature stack
+(`backend/cache/feature_stack_10m.npz`, loaded once at API startup); drawing a region
+never triggers a fresh satellite fetch. That cache is built offline from `pipeline/`'s
+output, re-run manually whenever the underlying data needs refreshing:
+
+- `pipeline/fetching/` — the scripts that actually call an external API (Google Earth
+  Engine for Sentinel-2/Landsat/ECOSTRESS, OSM's Overpass API for building/road
+  vectors). Each prints its own real KEEP/DROP verdict against a named threshold in
+  `pipeline/common/thresholds.py` — nothing is assumed to have worked silently.
+- `pipeline/derive_monthly_ndvi_ndwi.py`, `pipeline/train_and_apply_monthly_lulc.py` —
+  derive NDVI/NDWI and land cover from the already-fetched Sentinel-2 bands (no
+  external calls of their own).
+- `pipeline/check_all_data_health.py`, `pipeline/check_resolution_disqualifications.py`
+  — standalone validation utilities.
+
+See [`DATA_REPORT.md`](DATA_REPORT.md) for the full dataset-by-dataset
 report (sources, resolution honesty, temporal coverage, what was dropped and why) and
 [`data-audit/`](data-audit/) for the earlier feasibility and pipeline-status audits.
 
