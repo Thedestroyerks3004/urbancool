@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+numpy
+pandas
+scipy
+rasterio
+geopandas
+shapely
+scikit-learn
+catboost
+shap

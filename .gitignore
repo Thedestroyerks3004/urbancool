@@ -1,0 +1,30 @@
+# Secrets -- never committed
+credentials/
+.cdsapirc
+*.pem
+*.key
+
+# Raw/derived geospatial data and model training outputs -- large, regenerable via the
+# pipeline scripts, not source
+data/
+model_output/
+model_output_*/
+backend/cache/
+catboost_info/
+pipeline/**/__pycache__/
+**/__pycache__/
+*.pyc
+
+# Runtime/build artifacts
+.run-logs/
+frontend/node_modules/
+frontend/.next/
+frontend/tsconfig.tsbuildinfo
+frontend/scripts/*.png
+
+# Editor/session state
+.claude/
+
+# Seeded design-canvas payload (bundles a large third-party editor bundle, not project
+# source) -- the actual mockup source (Main.dc.html) is kept.
+design/urban-cool-heat-dashboard.html
