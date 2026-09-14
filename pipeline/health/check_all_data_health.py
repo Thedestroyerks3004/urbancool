@@ -4,7 +4,7 @@ import rasterio
 import numpy
 import geopandas
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 validated_root = os.path.join("D:\\", "Projects", "UC", "data", "validated")
 
