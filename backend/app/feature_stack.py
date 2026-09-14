@@ -20,6 +20,9 @@ from scipy.ndimage import uniform_filter
 
 from app.albedo import compute_albedo_from_raw_bands, ALBEDO_METHOD_METADATA
 
+# Where the offline pipeline (unnecessary/pipeline/) wrote its output. If you change
+# these, the pipeline scripts that write to them must be changed to match, or this
+# module will find nothing and every feature will come back as NaN.
 DATA_DIR = "D:\\Projects\\UC\\data\\validated"
 CACHE_DIR = "D:\\Projects\\UC\\backend\\cache"
 
@@ -30,16 +33,35 @@ LULC_DIR = os.path.join(DATA_DIR, "lulc_10m_monthly")
 BUILDINGS_PATH = os.path.join(DATA_DIR, "building_footprints", "building_footprints.geojson")
 ROADS_PATH = os.path.join(DATA_DIR, "road_network", "road_network.geojson")
 
+# The land-cover classifier (unnecessary/pipeline/derive/train_and_apply_monthly_lulc.py)
+# writes these exact integer codes into every LULC raster. Changing a number here without
+# changing it there (or vice versa) silently relabels pixels -- e.g. if the classifier's
+# "built-up" class becomes code 3 but this stays 0, built_up_pct_mean would compute from
+# whatever code 0 now means, wrong and with no error raised.
 LULC_BUILT_UP_CODE = 0
 LULC_VEGETATION_CODE = 1
 LULC_WATER_CODE = 2
 LULC_NODATA_CODE = 255
 
+# Side length, in pixels, of the moving window used to turn point/line vector data (OSM
+# buildings/roads) into a per-pixel density. 9 pixels = 90m x 90m. Raising this smooths
+# density over a wider neighborhood (less noisy, but blurs out small dense clusters);
+# lowering it makes density more locally sensitive but noisier. Must stay odd so the
+# window has a true center pixel.
 BUILDING_DENSITY_WINDOW_PIXELS = 9
 ROAD_DENSITY_WINDOW_PIXELS = 9
+# The native resolution of every raster this project uses. Changing this without actually
+# re-fetching data at a different resolution would silently mis-scale every density and
+# distance calculation below -- it must match the real pixel size of the source rasters,
+# not be treated as a tunable setting.
 PIXEL_SIZE_METERS = 10.0
 
 FEATURE_STACK_CACHE_PATH = os.path.join(CACHE_DIR, "feature_stack_10m.npz")
+# The 14 columns the trained model expects, in this exact order (CatBoost stores feature
+# order, not names, internally). Adding/removing/reordering a name here means the model
+# in backend/models/ no longer matches this code and must be retrained (backend/app/
+# model.py) before the API can serve predictions again -- it will not error loudly, it
+# will just silently feed the wrong column of data into the wrong learned split.
 FEATURE_NAMES = [
     "ndvi_mean", "ndvi_min", "ndvi_std",
     "ndwi_mean", "ndwi_std",
@@ -133,7 +155,16 @@ def build_feature_stack(force_rebuild=False):
     squares, min, count) instead of stacking all months in memory -- mean/std/min are
     then a few lines of arithmetic on those totals once the pass finishes. The built-up
     trend uses the same idea: the closed-form least-squares slope only needs five running
-    sums (sum of t, sum of y, sum of t*y, sum of t^2, and count), not the full time series."""
+    sums (sum of t, sum of y, sum of t*y, sum of t^2, and count), not the full time series.
+
+    force_rebuild=False (the default, and what the live API always uses): if the cache
+    file already exists, load it in under a second instead of recomputing. Every request
+    to the running server reuses this same cached result -- it is never recomputed per
+    request.
+    force_rebuild=True: ignore the cache and recompute from data/validated/ from scratch
+    (several minutes). Only pass this when the source data actually changed -- e.g. after
+    running the fetching/ scripts again -- otherwise you're just paying the cost for the
+    same answer."""
     if os.path.exists(FEATURE_STACK_CACHE_PATH) and not force_rebuild:
         log(f"Cached feature stack found at {FEATURE_STACK_CACHE_PATH}, loading instead of recomputing.")
         cached = np.load(FEATURE_STACK_CACHE_PATH, allow_pickle=True)

@@ -21,6 +21,9 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# allow_origins=["*"] means any website can call this API from a browser, not just
+# frontend/. Fine for local development; a real deployment should replace "*" with the
+# actual frontend URL, or any site could embed this API and use up its compute for free.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

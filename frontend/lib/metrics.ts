@@ -12,6 +12,15 @@ export interface MetricDefinition {
 // These map directly to real backend feature names (app/feature_stack.py FEATURE_NAMES)
 // plus the special "heat_vulnerability" model-derived layer. No metric here is invented --
 // each one is a real, queryable /api/v1/region/{id}/metrics/{name} endpoint.
+//
+// What happens if you change something here:
+// - `id` MUST exactly match a backend feature name (or "heat_vulnerability") -- change
+//   it and the metric layer silently shows nothing, because the backend won't recognize
+//   the id in its GET /metrics/{name} route (404, caught as a fetch error in page.tsx).
+// - `stops`/`minLabel`/`maxLabel` are purely cosmetic (color scale + legend text) --
+//   safe to change freely, no backend impact.
+// - Adding a new entry here does NOT add a new metric -- the backend has to already
+//   compute that feature (feature_stack.py FEATURE_NAMES) first.
 export const METRICS: MetricDefinition[] = [
   { id: "heat_vulnerability", label: "Heat Vulnerability", kind: "continuous", stops: ["#fff8dc", "#fdae61", "#d7191c", "#7f0000"], minLabel: "0", maxLabel: "100" },
   { id: "ndvi_mean", label: "NDVI (Vegetation)", kind: "continuous", stops: ["#f7fbef", "#addd8e", "#31a354", "#00441b"], minLabel: "-1", maxLabel: "1" },
@@ -25,6 +34,15 @@ export const METRICS: MetricDefinition[] = [
 
 // Mirrors app/simulator.py's INTERVENTION_ASSUMPTIONS keys exactly -- the backend is the
 // source of truth for what each one actually does; these are just display labels.
+//
+// What happens if you change something here:
+// - `id` MUST exactly match a key in simulator.py's INTERVENTION_ASSUMPTIONS -- a
+//   mismatch means POST /simulate rejects it with a 400 "Unknown intervention type"
+//   error, which page.tsx's simulateMutation.isError would surface.
+// - `label` is cosmetic only, safe to change.
+// - Adding an entry here without adding the matching branch to simulator.py's
+//   apply_intervention() means the backend raises ValueError("Unknown intervention
+//   type") for it -- the button would appear in the UI but simulating it would fail.
 export const INTERVENTIONS = [
   { id: "add_tree_cover", label: "Add Tree Cover" },
   { id: "cool_roof", label: "Cool Roof" },

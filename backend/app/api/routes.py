@@ -30,7 +30,19 @@ from app.state import get_app_state
 
 router = APIRouter(prefix="/api/v1")
 
+# How many pixels SHAP explains per /analyze call, at most (see analyze_region below).
+# SHAP only feeds an aggregate mean-per-feature summary, not a per-pixel value, so a
+# random sample this size is statistically just as good as explaining every pixel --
+# but SHAP's cost scales with row count, so raising this makes /analyze slower on large
+# regions (500 rows is a few seconds; every pixel of a 100k+ region was 10s of seconds).
+# Lowering it further speeds up /analyze but makes the "why this score" explanation a
+# noisier estimate for a very small/patchy region.
 SHAP_SAMPLE_SIZE = 500
+# Used only by build_plain_language_summary below, to turn the top SHAP feature names
+# into the "why this score" sentence. Every key here must exactly match a name in
+# feature_stack.py's FEATURE_NAMES -- a feature missing from this dict just falls back to
+# printing its raw column name (e.g. "ndvi_mean" instead of "low vegetation cover"),
+# it won't crash, just read worse.
 FEATURE_NAME_TO_PLAIN_LANGUAGE = {
     "ndvi_mean": "low vegetation cover",
     "ndwi_mean": "little nearby water/moisture",

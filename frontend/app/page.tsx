@@ -40,9 +40,20 @@ function metricPropertyName(metricId: string): string {
 }
 
 export default function HomePage() {
+  // Which metric layer's colors are shown (must be one of lib/metrics.ts's METRICS ids).
+  // Starts on "heat_vulnerability" since that's the only layer the analyze response
+  // ships immediately -- any other metric triggers the extra fetch in otherMetricQuery
+  // below.
   const [activeMetricId, setActiveMetricId] = useState("heat_vulnerability");
+  // True only while the user is actively in "click Draw region, then drag" mode --
+  // toggled by the header button, and MapView reads this to switch its cursor and
+  // whether map panning vs. rectangle-dragging is active.
   const [isDrawMode, setIsDrawMode] = useState(false);
+  // Which intervention's results are shown in the table/map (null = none picked yet).
   const [selectedIntervention, setSelectedIntervention] = useState<InterventionId | null>(null);
+  // Which side of the simulation the map/table currently display for the selected
+  // intervention. Purely a display toggle -- both before and after scores are always
+  // already present in the fetched data, flipping this never triggers a new request.
   const [beforeAfter, setBeforeAfter] = useState<"before" | "after">("before");
   // Which layer the map actually renders. Ranking/auto-selecting a top intervention for the
   // side panel must not, by itself, force the map into simulation view -- otherwise clicking

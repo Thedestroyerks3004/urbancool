@@ -26,6 +26,12 @@ import { buildColorExpression, getMetricById, MetricDefinition } from "@/lib/met
 
 const HEAT_VULNERABILITY_METRIC = getMetricById("heat_vulnerability");
 
+// The exact study area the backend has real data for (must match backend/app/
+// feature_stack.py's actual data extent). AOI_CENTER/AOI_BOUNDS draw the dashed boundary
+// and set the initial camera. Changing these to a box the backend has NO data for means
+// every draw inside it returns the real 400 "Drawn region contains no pixels" error --
+// this constant does not expand what the backend can serve, it only changes what the map
+// visually invites you to draw.
 const AOI_CENTER: [number, number] = [80.225, 12.9];
 const AOI_BOUNDS: [[number, number], [number, number]] = [
   [80.15, 12.75],
@@ -33,7 +39,9 @@ const AOI_BOUNDS: [[number, number], [number, number]] = [
 ];
 
 // The map is locked to roughly this box (see maxBounds below) so a user can never
-// pan/zoom away from the only area the backend actually has data for.
+// pan/zoom away from the only area the backend actually has data for. Deliberately a bit
+// larger than AOI_BOUNDS so the boundary line itself stays visible with some margin
+// around it, rather than sitting exactly at the edge of the pannable area.
 const AOI_MAX_BOUNDS: [[number, number], [number, number]] = [
   [80.10, 12.70],
   [80.35, 13.10],
@@ -56,13 +64,18 @@ const AOI_POLYGON: GeoJSON.Feature<GeoJSON.Polygon> = {
   },
 };
 
-const GRID_SOURCE_ID = "metric-grid";
-const GRID_LAYER_ID = "metric-grid-layer";
-const SIM_SOURCE_ID = "simulation-grid";
-const SIM_LAYER_ID = "simulation-grid-layer";
-const AOI_BOUNDARY_SOURCE_ID = "aoi-boundary";
+// MapLibre needs a unique string id per source/layer -- these are just internal names
+// used to look the layer up later (map.getLayer(...), map.setPaintProperty(...)). They
+// are never seen by the user and can be renamed freely, as long as every reference to
+// the same constant below is updated together (a typo'd id just means that layer's
+// later updates silently do nothing, since map.getLayer() would return undefined).
+const GRID_SOURCE_ID = "metric-grid";       // the active metric layer's data
+const GRID_LAYER_ID = "metric-grid-layer";  // the active metric layer's circles
+const SIM_SOURCE_ID = "simulation-grid";        // before/after intervention data
+const SIM_LAYER_ID = "simulation-grid-layer";   // before/after intervention circles
+const AOI_BOUNDARY_SOURCE_ID = "aoi-boundary";       // the dashed study-area outline
 const AOI_BOUNDARY_LINE_LAYER_ID = "aoi-boundary-line";
-const DRAFT_SOURCE_ID = "draft-region";
+const DRAFT_SOURCE_ID = "draft-region";           // the rectangle being actively dragged
 const DRAFT_FILL_LAYER_ID = "draft-region-fill";
 const DRAFT_LINE_LAYER_ID = "draft-region-line";
 
@@ -152,9 +165,14 @@ export default function MapView({
         type: "circle",
         source: GRID_SOURCE_ID,
         paint: {
-          // Denser, native-resolution point cloud (raised backend cap from 4k to 60k cells)
-          // needs smaller radii and slight blur so adjacent 10m cells blend into a smooth
-          // surface instead of visible gaps or dot texture.
+          // Denser, native-resolution point cloud (backend serves up to 800k cells
+          // unaggregated) needs smaller radii and slight blur so adjacent 10m cells
+          // blend into a smooth surface instead of visible gaps or dot texture. Each
+          // [zoom, radius] pair below is a fixed point MapLibre interpolates between --
+          // raise the radius values for bigger, more visible dots (at the cost of more
+          // overlap/blur on dense regions); the "#cccccc" color here is only the
+          // fallback before real data loads -- the actual per-metric colors are set at
+          // runtime by buildColorExpression (lib/metrics.ts), not here.
           "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 1.4, 14, 4, 18, 9],
           "circle-blur": 0.35,
           "circle-color": "#cccccc",

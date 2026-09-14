@@ -15,6 +15,12 @@ from shapely.geometry import shape as shapely_shape
 from app.feature_stack import FEATURE_NAMES
 from app.grid_utils import affine_pixel_centers_to_lonlat
 
+# Every constant below is a planning assumption (see each intervention's "rationale" in
+# INTERVENTION_ASSUMPTIONS further down for why that specific number was chosen), not a
+# measured value for this corridor. Changing one changes that intervention's simulated
+# effect immediately -- no retraining needed, since these only perturb the INPUT features
+# fed into the already-trained model (apply_intervention below), they never touch the
+# model itself. A larger boost -> a larger simulated improvement; that's the whole effect.
 TREE_COVER_NDVI_BOOST = 0.15
 COOL_ROOF_ALBEDO_BOOST = 0.20
 GREEN_SPACE_NDVI_BOOST = 0.25
@@ -30,6 +36,11 @@ WATER_FEATURE_BUILT_UP_REDUCTION_PCT = 12.0
 DENSITY_REDUCTION_BUILDING_DENSITY_PCT = 25.0
 DENSITY_REDUCTION_BUILT_UP_REDUCTION_PCT = 10.0
 DENSITY_REDUCTION_NDVI_BOOST = 0.10
+# Shared "is this pixel meaningfully built-up" gate for cool_roof and green_roof (a roof
+# coating/greening intervention shouldn't apply to open land that has no roof). Named
+# once and reused so changing it can't accidentally update one intervention's gate but
+# not the other's, the way two separate hardcoded 10.0s could.
+MEANINGFUL_BUILT_UP_THRESHOLD_PCT = 10.0
 
 INTERVENTION_ASSUMPTIONS = {
     "add_tree_cover": {
@@ -107,7 +118,7 @@ def apply_intervention(feature_df, intervention_type):
         perturbed["ndvi_mean"] = clip(perturbed["ndvi_mean"] + TREE_COVER_NDVI_BOOST, -1.0, 1.0)
 
     elif intervention_type == "cool_roof":
-        has_meaningful_built_up = perturbed["built_up_pct_mean"] > 10.0
+        has_meaningful_built_up = perturbed["built_up_pct_mean"] > MEANINGFUL_BUILT_UP_THRESHOLD_PCT
         perturbed.loc[has_meaningful_built_up, "albedo_mean"] = clip(
             perturbed.loc[has_meaningful_built_up, "albedo_mean"] + COOL_ROOF_ALBEDO_BOOST, 0.0, 1.0
         )
@@ -118,7 +129,7 @@ def apply_intervention(feature_df, intervention_type):
         perturbed["built_up_pct_mean"] = clip(perturbed["built_up_pct_mean"] - GREEN_SPACE_BUILT_UP_REDUCTION_PCT, 0.0, 100.0)
 
     elif intervention_type == "green_roof":
-        has_meaningful_built_up = perturbed["built_up_pct_mean"] > 10.0
+        has_meaningful_built_up = perturbed["built_up_pct_mean"] > MEANINGFUL_BUILT_UP_THRESHOLD_PCT
         perturbed.loc[has_meaningful_built_up, "ndvi_mean"] = clip(
             perturbed.loc[has_meaningful_built_up, "ndvi_mean"] + GREEN_ROOF_NDVI_BOOST, -1.0, 1.0
         )

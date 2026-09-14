@@ -22,13 +22,26 @@ estimated, not measured.
 
 import numpy as np
 
+# Published Liang (2001) coefficients -- these are not tunable parameters, they're a
+# citation. Changing them means computing a different, undocumented formula; if SWIR
+# bands ever become usable (see the module docstring above), the correct fix is adding
+# their terms back in with published coefficients, not editing these three numbers.
 LIANG_2001_BLUE_COEFFICIENT = 0.356
 LIANG_2001_RED_COEFFICIENT = 0.130
 LIANG_2001_NIR_COEFFICIENT = 0.373
+# Recomputed automatically from the three coefficients above -- always keep this a
+# derived value, never hardcode it, or it will silently stop matching them if one changes.
 RENORMALIZATION_DIVISOR = LIANG_2001_BLUE_COEFFICIENT + LIANG_2001_RED_COEFFICIENT + LIANG_2001_NIR_COEFFICIENT
 
+# Sentinel-2 stores reflectance as an integer 0-10000 (not a 0-1 float) to save space.
+# This is a sensor/format constant, not a tunable setting -- it must match how the
+# fetching scripts wrote the band files, or every albedo value comes out 10000x too small.
 SENTINEL2_REFLECTANCE_SCALE_FACTOR = 10000.0
 
+# Physical bounds on albedo (it's a reflectance fraction, can't be negative or over 1).
+# Values outside this range come from the partial 3-band formula's approximation error,
+# not real physics -- clipped here rather than left to propagate into the model as
+# nonsensical inputs.
 ALBEDO_VALID_MINIMUM = 0.0
 ALBEDO_VALID_MAXIMUM = 1.0
 

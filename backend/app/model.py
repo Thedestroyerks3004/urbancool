@@ -18,20 +18,52 @@ from catboost import CatBoostRegressor, Pool
 
 from app.feature_stack import FEATURE_NAMES, build_feature_stack
 
+# Where the trained model is saved/loaded. backend/app/state.py reads from here at
+# startup -- retraining (train_native_10m_model, at the bottom of this file) overwrites
+# both files, and the running server must be restarted to pick up a newly trained model
+# (it's only loaded once, not watched for changes).
 MODELS_DIR = "D:\\Projects\\UC\\backend\\models"
 MODEL_PATH = os.path.join(MODELS_DIR, "heat_vulnerability_native10m.cbm")
 MODEL_METADATA_PATH = os.path.join(MODELS_DIR, "heat_vulnerability_native10m_metadata.npz")
 
+# If a group's mean pairwise |correlation| exceeds this, the whole group shares a combined
+# 0.5 weight instead of each member counting in full (see compute_correlations_and_weights
+# below). Lowering this makes down-weighting trigger more easily (more groups get
+# treated as redundant); raising it toward 1.0 makes every feature count close to fully
+# regardless of correlation. This directly changes the label every pixel is trained
+# against, so changing it requires retraining (train_native_10m_model) -- it does nothing
+# to an already-trained model.
 CORRELATION_DOWNWEIGHT_THRESHOLD = 0.5
+# Which of the 14 features count as "structural" (urban form) vs "cooling" (vegetation/
+# water/reflectivity) for that correlation check. Adding a feature here without adding it
+# to feature_stack.py's FEATURE_NAMES first will raise a KeyError; adding one that exists
+# but was meant to stay neutral will pull it into the weighted label unintentionally.
 STRUCTURAL_COLUMNS = ["built_up_pct_mean", "building_density_per_km2", "road_density_km_per_km2"]
 COOLING_COLUMNS = ["ndvi_mean", "ndwi_mean", "albedo_mean"]
 
+# How many rows CatBoost sees per training batch (see train_catboost_in_batches). Raising
+# this uses more RAM/CPU per batch but fewer batches overall; lowering it is gentler on
+# the machine but takes more wall-clock time for the same total data. Does not change the
+# final model's accuracy in any meaningful way -- it's a resource/time tradeoff, not a
+# modeling choice.
 TRAINING_BATCH_SIZE = 500000
+# Deliberately less than the machine's full core count so training doesn't pin the CPU at
+# 100% for the whole run. Raising this speeds up training at the cost of leaving less CPU
+# for anything else running at the same time.
 CATBOOST_THREAD_COUNT = 6
+# Real CatBoost hyperparameters -- these DO change model accuracy and must be re-evaluated
+# (check the held-out R²/MAE this function prints) if changed, not assumed safe:
+#   iterations: more trees per batch = more capacity, slower training, risk of overfitting
+#   learning_rate: smaller = more stable but needs more iterations to converge
+#   depth: deeper trees = more capacity but slower and more prone to overfitting
 CATBOOST_ITERATIONS_PER_BATCH = 150
 CATBOOST_LEARNING_RATE = 0.05
 CATBOOST_DEPTH = 6
 
+# Fraction of pixels held out for the reported R²/MAE, and the seed that makes the
+# train/test split (and every other random draw in this file) reproducible. Changing
+# RANDOM_STATE gives a different-but-equally-valid split; changing TEST_SET_FRACTION
+# trades off how many pixels train the model vs. how confidently accuracy is measured.
 TEST_SET_FRACTION = 0.2
 RANDOM_STATE = 42
 

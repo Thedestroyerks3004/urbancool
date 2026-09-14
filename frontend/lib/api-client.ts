@@ -13,6 +13,11 @@ export type InterventionResult = components["schemas"]["InterventionResult"];
 export type RankedLocation = components["schemas"]["RankedLocation"];
 export type MetricStats = components["schemas"]["MetricStats"];
 
+// Where every request in this file goes. Set NEXT_PUBLIC_API_BASE_URL in
+// frontend/.env.local to point at a different backend (e.g. a deployed one) without
+// editing code; the 127.0.0.1:8000 fallback below only matters for local dev when that
+// env var is unset. Every fetch call in this file breaks (network error, caught as
+// ApiError-less network failure) if this doesn't point at a running backend.
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:8000";
 
 export class ApiError extends Error {

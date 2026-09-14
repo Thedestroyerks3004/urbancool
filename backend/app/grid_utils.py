@@ -10,6 +10,12 @@ happened and what the resulting cell size is, so the frontend can show it honest
 import numpy as np
 import pandas as pd
 
+# Above this many pixels, the response gets aggregated (see build_grid_geojson) instead
+# of returning one point per pixel. Raising this shows more regions at true native 10m
+# resolution, but a large drawn region's response payload and the model/SHAP compute
+# time both scale with pixel count -- raising it too far trades response speed for
+# resolution on big draws. Lowering it makes large regions render faster but coarser.
+# This is a map-rendering limit only; it has no effect on the model or the cached data.
 MAX_UNAGGREGATED_PIXELS = 800000
 
 

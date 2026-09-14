@@ -89,6 +89,10 @@ export default function InterventionPanel({
         <div className="flex flex-col gap-1.5 mb-3">
           {rankedInterventions.map((iv, rank) => {
             const active = selectedIntervention === iv.intervention_type;
+            // Bar width as a % of the best intervention's improvement (so #1 always
+            // fills 100%, others scale relative to it). The `Math.max(6, ...)` floor
+            // keeps a very low-effect intervention's bar from disappearing to 0px --
+            // it's a minimum visible width, not a real data value.
             const barWidth = bestImprovement > 0 ? Math.max(6, (iv.mean_improvement / bestImprovement) * 100) : 0;
             return (
               <button
