@@ -1,3 +1,7 @@
+// Thin typed wrapper over the backend's 4 REST endpoints. Types come from api-types.ts,
+// which is generated from the backend's own OpenAPI schema (see frontend/README.md) --
+// so a backend response-shape change that isn't regenerated here fails to typecheck
+// instead of silently mismatching at runtime.
 import type { components } from "./api-types";
 
 export type RegionAnalyzeResponse = components["schemas"]["RegionAnalyzeResponse"];

@@ -56,6 +56,8 @@ def log(msg):
 
 
 def list_available_months():
+    """Only months where NDVI, NDWI, LULC, and the raw bands all exist are usable -- this
+    finds that intersection instead of assuming every month is complete."""
     ndvi_files = sorted(glob.glob(os.path.join(NDVI_DIR, "*.tif")))
     months = []
     for f in ndvi_files:
@@ -69,6 +71,8 @@ def list_available_months():
 
 
 def get_reference_grid():
+    """Every month's raster shares the same grid, so any one NDVI file's transform/shape/
+    CRS defines the pixel grid every feature is computed on."""
     reference_file = sorted(glob.glob(os.path.join(NDVI_DIR, "*.tif")))[0]
     with rasterio.open(reference_file) as ds:
         return ds.transform, (ds.height, ds.width), ds.crs, ds.bounds
@@ -123,6 +127,13 @@ def rasterize_road_density(transform, shape, crs):
 
 
 def build_feature_stack(force_rebuild=False):
+    """Compute (or load from cache) every per-pixel feature for the whole AOI.
+
+    Runs one pass over the months, keeping only running totals per pixel (sum, sum of
+    squares, min, count) instead of stacking all months in memory -- mean/std/min are
+    then a few lines of arithmetic on those totals once the pass finishes. The built-up
+    trend uses the same idea: the closed-form least-squares slope only needs five running
+    sums (sum of t, sum of y, sum of t*y, sum of t^2, and count), not the full time series."""
     if os.path.exists(FEATURE_STACK_CACHE_PATH) and not force_rebuild:
         log(f"Cached feature stack found at {FEATURE_STACK_CACHE_PATH}, loading instead of recomputing.")
         cached = np.load(FEATURE_STACK_CACHE_PATH, allow_pickle=True)

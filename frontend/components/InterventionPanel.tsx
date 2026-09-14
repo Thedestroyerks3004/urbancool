@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Right-side panel: the ranked intervention list (a button per intervention, sorted
+ * best-first, with a proportional effect bar) plus, once one is selected, a before/after
+ * map toggle and a sortable table of its best-improved locations.
+ */
+
 import { useMemo, useState } from "react";
 import { INTERVENTIONS, InterventionId } from "@/lib/metrics";
 import { InterventionResult } from "@/lib/api-client";

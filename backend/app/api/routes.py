@@ -1,3 +1,14 @@
+"""
+The four HTTP endpoints the frontend calls. All heavy work (reading the feature stack,
+running the model, computing SHAP) happens here; the frontend only ever sees JSON and
+GeoJSON.
+
+    POST /region/analyze                   draw a region -> score it, explain it
+    GET  /region/{id}/metrics/{name}        fetch one extra metric layer, on demand
+    POST /region/{id}/simulate              score interventions for an analyzed region
+    GET  /health                            model version, accuracy, cache status
+"""
+
 import os
 import time
 import numpy as np
@@ -38,6 +49,7 @@ FEATURE_NAME_TO_PLAIN_LANGUAGE = {
 
 
 def compute_metric_stats(values):
+    """Mean/min/max/std for one metric across a region, ignoring nodata pixels."""
     valid = values[~np.isnan(values)]
     if len(valid) == 0:
         return MetricStats(mean=0.0, min=0.0, max=0.0, std=0.0)
@@ -45,6 +57,9 @@ def compute_metric_stats(values):
 
 
 def build_plain_language_summary(shap_contributions):
+    """Turn the top 2 SHAP features into one plain-English sentence for the UI's
+    "why this score" panel, e.g. "Low vegetation cover and high road density are the
+    main drivers..."."""
     top_two = shap_contributions[:2]
     phrases = [FEATURE_NAME_TO_PLAIN_LANGUAGE.get(c.feature, c.feature) for c in top_two]
     if len(phrases) == 2:
@@ -56,6 +71,9 @@ def build_plain_language_summary(shap_contributions):
 
 @router.post("/region/analyze", response_model=RegionAnalyzeResponse)
 def analyze_region(request: RegionAnalyzeRequest):
+    """Score a user-drawn polygon: find its pixels, run the model, explain the result
+    with SHAP, and return a heat-vulnerability map grid plus summary stats for every
+    metric. This is the first call the frontend makes after a region is drawn."""
     state = get_app_state()
     meta = state.meta
     feature_arrays = state.feature_arrays
@@ -126,6 +144,9 @@ def analyze_region(request: RegionAnalyzeRequest):
 
 @router.get("/region/{region_id}/metrics/{metric_name}", response_model=MetricLayerResponse)
 def get_metric_layer(region_id: str, metric_name: str):
+    """Fetch one metric's grid for a region that /analyze has already cached. The
+    frontend calls this only when the user switches to a non-default metric layer, so a
+    region's full feature set is never sent unless it's actually looked at."""
     state = get_app_state()
     meta = state.meta
     feature_arrays = state.feature_arrays
@@ -167,6 +188,9 @@ def get_metric_layer(region_id: str, metric_name: str):
 
 @router.post("/region/{region_id}/simulate", response_model=SimulateResponse)
 def simulate(region_id: str, request: SimulateRequest):
+    """Score one or more interventions against an already-analyzed region. Returns, per
+    intervention: a ranked top-locations table and a full before/after map grid, so the
+    frontend can both list results and paint them on the map."""
     state = get_app_state()
     meta = state.meta
     feature_arrays = state.feature_arrays
@@ -212,6 +236,8 @@ def simulate(region_id: str, request: SimulateRequest):
 
 @router.get("/health", response_model=HealthResponse)
 def health():
+    """Model version, accuracy, and cache freshness -- used by run.sh/run.ps1 to detect
+    the backend is actually ready, and handy for a quick sanity check in the browser."""
     state = get_app_state()
     metadata = state.model_metadata
 

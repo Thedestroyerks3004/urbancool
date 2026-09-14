@@ -1,43 +1,24 @@
 import { ShapContribution } from "@/lib/api-client";
 import { getMetricById } from "@/lib/metrics";
 
-const FEATURE_TO_PLAIN_LANGUAGE: Record<string, string> = {
-  ndvi_mean: "low vegetation cover",
-  ndwi_mean: "little nearby water/moisture",
-  albedo_mean: "low surface reflectivity (dark, heat-absorbing surfaces)",
-  built_up_pct_mean: "a high proportion of built-up land",
-  vegetation_pct_mean: "limited vegetated land",
-  water_pct_mean: "limited water bodies",
-  built_up_pct_trend: "a rising trend in built-up land over time",
-  building_density_per_km2: "high building density",
-  road_density_km_per_km2: "high road density",
-  ndvi_min: "patches of very low vegetation",
-  ndvi_std: "inconsistent vegetation cover",
-  ndwi_std: "inconsistent moisture presence",
-  albedo_min: "patches of very dark surfaces",
-  albedo_std: "inconsistent surface reflectivity",
-};
-
-function buildSummary(shapSummary: ShapContribution[]): string {
-  if (shapSummary.length === 0) return "Draw a region on the map to see which factors drive its heat vulnerability score.";
-  const topTwo = shapSummary.slice(0, 2).map((c) => FEATURE_TO_PLAIN_LANGUAGE[c.feature] ?? c.feature);
-  if (topTwo.length === 2) {
-    return `${topTwo[0][0].toUpperCase()}${topTwo[0].slice(1)} and ${topTwo[1]} are the main drivers of the heat vulnerability score in this area.`;
-  }
-  return `${topTwo[0][0].toUpperCase()}${topTwo[0].slice(1)} is the main driver of the heat vulnerability score in this area.`;
-}
-
+// The plain-language sentence ("Low vegetation cover and high road density are the main
+// drivers...") comes from the backend's plain_language_summary field, not recomputed
+// here -- the feature-name-to-plain-English mapping only needs to exist once
+// (backend/app/api/routes.py FEATURE_NAME_TO_PLAIN_LANGUAGE), not duplicated client-side.
 interface ExplanationPanelProps {
   shapSummary: ShapContribution[] | null;
+  plainLanguageSummary: string | null;
   isLoading: boolean;
 }
 
-export default function ExplanationPanel({ shapSummary, isLoading }: ExplanationPanelProps) {
+export default function ExplanationPanel({ shapSummary, plainLanguageSummary, isLoading }: ExplanationPanelProps) {
   return (
     <div>
       <div className="text-[11px] font-semibold uppercase tracking-wide text-[#a09a89] mb-2">Why this score</div>
       <div className="text-[13px] leading-relaxed text-[#2c2a24] px-3 py-2.5 bg-[#faf5ee] rounded-md">
-        {isLoading ? "Analyzing region..." : buildSummary(shapSummary ?? [])}
+        {isLoading
+          ? "Analyzing region..."
+          : plainLanguageSummary ?? "Draw a region on the map to see which factors drive its heat vulnerability score."}
       </div>
       {shapSummary && shapSummary.length > 0 && (
         <div className="mt-2.5 flex flex-col gap-1">

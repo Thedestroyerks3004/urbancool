@@ -1,4 +1,10 @@
-# Urban Cool (Chennai) — Data Pipeline Status Report
+# Urban Cool (Chennai) — Data Pipeline Status Report (historical)
+
+> **Point-in-time snapshot.** Several scripts named below (early single-shot fetchers,
+> the zonal 300m/100m/50m/30m model iterations, `fetch_worldcover_10m.py`) were later
+> superseded by the final monthly pipeline and the native-10m model, and have since been
+> removed from `pipeline/` to keep the repo to what the running app actually uses. See
+> the [project root README](../README.md) for the current pipeline file list.
 
 Two parallel tracks have been built and run with real fetch/validate/decide code (no simulated results). This report consolidates both as of the current session.
 

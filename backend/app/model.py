@@ -41,6 +41,8 @@ def log(msg):
 
 
 def normalize_0_1(array_values):
+    """Rescale an array to the [0, 1] range so features with different units (a percent,
+    a count, an index) can be combined with simple weights below."""
     lo = np.nanmin(array_values)
     hi = np.nanmax(array_values)
     if hi - lo < 1e-9:
@@ -49,6 +51,8 @@ def normalize_0_1(array_values):
 
 
 def flatten_feature_stack_to_dataframe(feature_arrays):
+    """Turn the 2D per-pixel feature rasters into one row-per-pixel table, dropping
+    pixels with no real data and filling any remaining gaps with the column median."""
     log("Flattening the native-10m feature stack to a per-pixel table ...")
     flat = {name: feature_arrays[name].ravel() for name in FEATURE_NAMES}
     df = pd.DataFrame(flat)
@@ -64,6 +68,9 @@ def flatten_feature_stack_to_dataframe(feature_arrays):
 
 
 def mean_pairwise_abs_correlation(corr_matrix, columns):
+    """Average |correlation| between every pair of columns in this group. Used to check
+    whether a group of features (e.g. built-up %, building density, road density) is
+    telling the model the same thing multiple times, which would overweight it."""
     n = len(columns)
     sub = corr_matrix.loc[columns, columns]
     total_abs_off_diagonal = np.abs(sub.values).sum() - n
@@ -71,6 +78,10 @@ def mean_pairwise_abs_correlation(corr_matrix, columns):
 
 
 def compute_correlations_and_weights(df):
+    """Decide how much each feature counts toward the heat vulnerability index. Features
+    in the same correlated group (structural: built-up/building/road density, or cooling:
+    NDVI/NDWI/albedo) share a combined 0.5 weight if they're redundant with each other
+    (mean pairwise |correlation| > 0.5), instead of each counting in full."""
     log("Computing the fresh correlation matrix at native 10m pixel resolution (not assumed from any zonal run) ...")
     corr_cols = STRUCTURAL_COLUMNS + COOLING_COLUMNS
     corr_matrix = df[corr_cols].corr()
@@ -112,6 +123,9 @@ def compute_correlations_and_weights(df):
 
 
 def build_heat_vulnerability_index(df, weights):
+    """The label CatBoost is trained to predict: a weighted sum of normalized features,
+    rescaled to 0-100. This is a deterministic formula, not a measurement -- see the
+    self_consistency_caveat saved with the model metadata below."""
     normalized = pd.DataFrame({col: normalize_0_1(df[col].values) for col in weights.keys()})
     raw_index = sum(normalized[col] * weight for col, weight in weights.items())
     raw_index = raw_index - raw_index.min()
@@ -120,6 +134,9 @@ def build_heat_vulnerability_index(df, weights):
 
 
 def train_catboost_in_batches(X_train, y_train):
+    """Train on every pixel, not a subsample, but split into batches and continue each
+    new CatBoost model from the previous one (init_model) so the whole ~5.5M-row training
+    set is never fit in a single call and the machine's CPU isn't pinned for the whole run."""
     log(f"Training CatBoost on {len(X_train)} real pixels in batches of {TRAINING_BATCH_SIZE} (thread_count={CATBOOST_THREAD_COUNT} of the machine's available cores, to avoid pinning the CPU) ...")
 
     n_batches = int(np.ceil(len(X_train) / TRAINING_BATCH_SIZE))
@@ -155,6 +172,10 @@ def train_catboost_in_batches(X_train, y_train):
 
 
 def train_native_10m_model(force_rebuild_features=False):
+    """End-to-end training entry point: build/load the feature stack, construct the
+    label, split train/test, train CatBoost, evaluate, and save the model + metadata to
+    disk. This is run offline, once -- the API only ever loads the saved result
+    (see load_trained_model / app/state.py), it never retrains per request."""
     log("=====================================================")
     log("TRAINING NATIVE-10m HEAT VULNERABILITY MODEL (full-pixel, batched)")
     log("=====================================================")
@@ -209,6 +230,8 @@ def train_native_10m_model(force_rebuild_features=False):
 
 
 def load_trained_model():
+    """Load the already-trained model artifact from disk. Called once at API startup
+    (app/state.py) so every request reuses the same in-memory model."""
     if not os.path.exists(MODEL_PATH):
         raise FileNotFoundError(f"No trained model found at {MODEL_PATH}. Run train_native_10m_model() first.")
     model = CatBoostRegressor()

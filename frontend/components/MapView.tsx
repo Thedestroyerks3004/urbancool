@@ -1,5 +1,17 @@
 "use client";
 
+/**
+ * The MapLibre map. Renders 5 layers on top of an OSM basemap:
+ *   1. metric-grid-layer     the currently selected metric (or Heat Vulnerability)
+ *   2. simulation-grid-layer before/after intervention overlay (hidden unless active)
+ *   3. aoi-boundary-line     dashed outline of the only area with real data
+ *   4. draft-region-fill/line   the rectangle being drawn, live, while dragging
+ * Only one of (1) and (2) is visible at a time -- see the "Simulation overlay" effect
+ * below. The map itself is created once (see the empty-dependency effect) and never
+ * recreated; every prop change after that just updates data or paint properties on the
+ * existing layers, which is far cheaper than remounting the whole map.
+ */
+
 import { useEffect, useRef, useCallback, useState } from "react";
 import {
   Map as MapLibreMap,
@@ -237,6 +249,8 @@ export default function MapView({
     }
   }, [simulationGridData, simulationField, isMapReady]);
 
+  // Redraws the dashed rectangle preview while the user is dragging (before mouseup
+  // actually submits a region to the backend).
   const updateDraftRectangle = useCallback((start: [number, number], end: [number, number]) => {
     const map = mapRef.current;
     if (!map) return;
@@ -255,6 +269,11 @@ export default function MapView({
     });
   }, []);
 
+  // Click-and-drag-to-draw-a-rectangle, implemented with raw mouse events (no external
+  // drawing library): mousedown records the start corner, mousemove live-updates the
+  // preview rectangle, mouseup computes the final west/south/east/north box and hands it
+  // to the parent via onRegionDrawn. Panning is disabled while in draw mode so a drag
+  // draws a rectangle instead of moving the map.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !isMapReady) return;

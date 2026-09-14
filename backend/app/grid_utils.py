@@ -1,3 +1,12 @@
+"""
+Turns per-pixel metric arrays into a GeoJSON point grid the map can render.
+
+If a drawn region has more pixels than MAX_UNAGGREGATED_PIXELS, cells are grouped into
+NxN blocks and averaged first (an "aggregated" response) so the payload and the number of
+map markers stay manageable for a very large region -- the response says whether this
+happened and what the resulting cell size is, so the frontend can show it honestly.
+"""
+
 import numpy as np
 import pandas as pd
 
@@ -17,6 +26,9 @@ def affine_pixel_centers_to_lonlat(transform, rows, cols):
 
 
 def build_grid_geojson(row_indices, col_indices, transform, metric_arrays_by_name, max_features=MAX_UNAGGREGATED_PIXELS):
+    """Build a GeoJSON FeatureCollection: one Point feature per pixel (or per aggregated
+    block, for a large region), carrying whichever metric arrays are passed in as
+    properties. Returns (geojson, aggregated, cell_size_meters)."""
     row_indices = np.asarray(row_indices)
     col_indices = np.asarray(col_indices)
     n_pixels = len(row_indices)

@@ -41,8 +41,14 @@ class MetricLayerResponse(BaseModel):
 
 
 class SimulateRequest(BaseModel):
-    intervention_types: List[str] = Field(..., description="One or more of: add_tree_cover, cool_roof, add_green_space")
-    top_n: int = 10
+    intervention_types: List[str] = Field(
+        ...,
+        description=(
+            "One or more of: add_tree_cover, cool_roof, add_green_space, green_roof, "
+            "cool_pavement, urban_water_feature, reduce_building_density"
+        ),
+    )
+    top_n: int = Field(10, description="How many best-improved locations to return per intervention (the ranked table).")
 
 
 class RankedLocation(BaseModel):

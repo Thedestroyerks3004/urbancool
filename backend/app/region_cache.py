@@ -17,11 +17,16 @@ _REGION_CACHE = {}
 
 
 def make_region_id(region_geojson_geometry):
+    """Same polygon always hashes to the same id, so redrawing an identical region reuses
+    the cache instead of recomputing it."""
     canonical = json.dumps(region_geojson_geometry, sort_keys=True)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
 
 
 def get_or_compute_region(region_geojson_geometry, meta):
+    """Look up (or compute and cache) which pixels fall inside a drawn polygon. Called by
+    /region/analyze; later /metrics and /simulate calls reuse the same pixel list via
+    get_cached_region instead of re-rasterizing the polygon."""
     region_id = make_region_id(region_geojson_geometry)
     if region_id in _REGION_CACHE:
         return region_id, _REGION_CACHE[region_id]

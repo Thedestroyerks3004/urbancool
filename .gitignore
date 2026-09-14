@@ -24,7 +24,3 @@ frontend/scripts/*.png
 
 # Editor/session state
 .claude/
-
-# Seeded design-canvas payload (bundles a large third-party editor bundle, not project
-# source) -- the actual mockup source (Main.dc.html) is kept.
-design/urban-cool-heat-dashboard.html

@@ -92,10 +92,15 @@ STANDARD_CAVEAT = (
 
 
 def clip(value, minimum, maximum):
+    """Shorthand for np.clip, used everywhere below to keep a perturbed feature inside
+    its physically valid range (e.g. NDVI can't go above 1, a percent can't go below 0)."""
     return np.clip(value, minimum, maximum)
 
 
 def apply_intervention(feature_df, intervention_type):
+    """Return a copy of feature_df with one intervention's effect applied. Each branch
+    below is the code form of the matching entry in INTERVENTION_ASSUMPTIONS above --
+    change a constant there and this function picks it up automatically."""
     perturbed = feature_df.copy()
 
     if intervention_type == "add_tree_cover":
@@ -146,6 +151,7 @@ def apply_intervention(feature_df, intervention_type):
 
 
 def get_pixel_indices_within_region(region_geojson_geometry, transform, shape):
+    """Which (row, col) pixels of the full-AOI grid fall inside a drawn GeoJSON polygon."""
     region_polygon = shapely_shape(region_geojson_geometry)
     region_mask = rasterio.features.geometry_mask(
         [region_polygon], out_shape=shape, transform=transform, invert=True
@@ -155,6 +161,12 @@ def get_pixel_indices_within_region(region_geojson_geometry, transform, shape):
 
 
 def simulate_intervention(feature_arrays, meta, model, region_geojson_geometry, intervention_type, top_n=10):
+    """Score a drawn region before and after one intervention.
+
+    Steps: find the region's pixels -> read their real feature values -> score them with
+    the trained model ("before") -> apply the intervention's perturbation -> score again
+    ("after"). Returns a summary (mean improvement, top_n best-improved locations for the
+    table) plus the full before/after arrays so the caller can build a map overlay."""
     transform = rasterio.transform.Affine(*meta["transform"])
     shape = (meta["height"], meta["width"])
 

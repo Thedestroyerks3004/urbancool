@@ -1,5 +1,20 @@
 "use client";
 
+/**
+ * Top-level page: owns all app state and wires the map + side panels together.
+ *
+ * Data flow, in order:
+ *   1. User draws a region on the map -> handleRegionDrawn -> POST /region/analyze.
+ *      The response carries the Heat Vulnerability grid, per-metric summary stats, and
+ *      a SHAP explanation -- and immediately triggers step 2.
+ *   2. All 7 interventions are simulated for that region in one POST /region/simulate
+ *      call, so they can be ranked by real effectiveness (rankedInterventions below).
+ *   3. The user can then switch between two independent things:
+ *      - which METRIC layer is shown (Metric Layer panel -> handleSelectMetric)
+ *      - whether the map is showing a metric or a simulation before/after overlay
+ *        (mapMode, switched by clicking a metric vs. clicking an intervention row)
+ */
+
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -200,7 +215,11 @@ export default function HomePage() {
         <div className="absolute top-4 right-4 bottom-4 w-[300px] flex flex-col gap-3 z-20 overflow-y-auto">
           <MetricTogglePanel activeMetricId={activeMetricId} onSelect={handleSelectMetric} />
           <div className="w-full bg-white rounded-lg shadow-lg p-4">
-            <ExplanationPanel shapSummary={analyzeResult?.shap_summary ?? null} isLoading={analyzeMutation.isPending} />
+            <ExplanationPanel
+              shapSummary={analyzeResult?.shap_summary ?? null}
+              plainLanguageSummary={analyzeResult?.plain_language_summary ?? null}
+              isLoading={analyzeMutation.isPending}
+            />
             <InterventionPanel
               rankedInterventions={rankedInterventions}
               selectedIntervention={selectedIntervention}
